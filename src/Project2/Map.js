@@ -1,9 +1,12 @@
-export function Map() {
+import styled from "styled-components";
+
+const Container = styled.div``;
+const Map = () => {
   return (
     <>
       <Container>
         <div>
-          <h2></h2>
+          <h2>맵 정보</h2>
           <p></p>
           <img src="" />
         </div>
@@ -25,4 +28,5 @@ export function Map() {
       </Container>
     </>
   );
-}
+};
+export default Map;

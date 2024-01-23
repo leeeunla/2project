@@ -35,6 +35,7 @@ export function NavText() {
                 회원가입
               </button>
             </Link>
+
             <Link to="/login">
               <button
                 style={{
@@ -61,9 +62,8 @@ export function NavText() {
           </div>
         </Div>
         <Header />
-        <Outlet />
-
         <GameSwiper />
+        <Outlet />
         <br />
         <Put />
         <br />

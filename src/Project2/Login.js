@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 
 const Contanier = styled.div`
@@ -14,8 +16,11 @@ const Contanier = styled.div`
 `;
 
 export function Login() {
-  const [userid, setUserid] = useState("");
+  const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  function onSubmit(e) {
+    e.preventDefault();
+  }
 
   return (
     <>
@@ -60,8 +65,15 @@ export function Login() {
               cursor: "pointer",
             }}
           >
-            <p>회원가입 &#124;</p>
-            <p>아이디찾기</p>
+            <Link
+              to="/signup"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <p>회원가입 &#124;</p>
+            </Link>
+            <Link to="/find" style={{ textDecoration: "none", color: "black" }}>
+              <p>아이디찾기</p>
+            </Link>
           </div>
         </div>
       </Contanier>

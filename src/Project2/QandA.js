@@ -1,8 +1,12 @@
-export function QandA() {
+import styled from "styled-components";
+
+const Contanier = styled.div``;
+const QandA = () => {
   return (
     <>
       <Contanier>
         <div>
+          <h2>질문과 답변</h2>
           <table>
             <thead>
               <tr>
@@ -34,4 +38,5 @@ export function QandA() {
       </Contanier>
     </>
   );
-}
+};
+export default QandA;

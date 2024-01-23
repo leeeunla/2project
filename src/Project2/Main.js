@@ -13,12 +13,15 @@ import styled from "styled-components";
 import { Managerlogin } from "./Managerlogin";
 import { ManagerSignup } from "./ManagerSignup";
 import { Board } from "./Board";
+import Findid from "./Findid";
+import { Inquiry } from "./Inquiry";
+import { Write } from "./Write";
 
 export const MainContext = createContext();
 const Container = styled.div``;
 
 export function Main() {
-  const [mainList, SetMainList] = useState("");
+  const [mainList, SetMainList] = useState(Board);
   return (
     <>
       <MainContext.Provider value={{ mainList, SetMainList }}>
@@ -26,13 +29,15 @@ export function Main() {
           <Container>
             <div>
               <Routes>
-                <Route path="/" element={<NavText />}>
-                  <Route path="board/:id" element={<Board />} />
-                </Route>
+                <Route path="/" element={<NavText />}></Route>
+                <Route path="board/:id" element={<Board />}></Route>
                 <Route path="login" element={<Login />}></Route>
                 <Route path="signup" element={<Signup />}></Route>
                 <Route path="admin/login" element={<Managerlogin />}></Route>
                 <Route path="admin/signup" element={<ManagerSignup />}></Route>
+                <Route path="find" element={<Findid />}></Route>
+                <Route path="quiry" element={<Inquiry />}></Route>
+                <Route path="write" element={<Write />}></Route>
               </Routes>
             </div>
           </Container>

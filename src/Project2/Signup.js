@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -14,21 +15,40 @@ const Container = styled.div`
 `;
 
 export function Signup() {
-  const [user, setUser] = useState("");
+  const [username, setUsername] = useState(""); // 닉네임
+  const [name, setName] = useState(""); // 성함
   const [password, setPassword] = useState("");
   const [id, setID] = useState("");
+  const [passwordcheck, setPasswordCheck] = useState(""); // 비밀번호 확인
   const [gender, setGender] = useState("");
   const [birthday, setBirthday] = useState("");
   const [email, setEmail] = useState("");
+
+  const [signup, setSignup] = useState();
+  const navigate = useNavigate();
   return (
     <>
       <Container>
-        <h1>링크의 모험</h1>
+        <h1>링크의 모험 회원가입</h1>
+        <div>
+          <label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="이름"
+              style={{ padding: "10px", margin: "10px" }}
+            />
+          </label>
+        </div>
         <div>
           <label>
             <input
               type="text"
               name="id"
+              value={id}
+              onChange={(e) => setID(e.target.value)}
               placeholder="아이디"
               style={{ padding: "10px", margin: "10px" }}
             />
@@ -38,6 +58,8 @@ export function Signup() {
           <label>
             <input
               type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               name="name"
               placeholder="닉네임"
               style={{ padding: "10px", margin: "10px" }}
@@ -49,6 +71,8 @@ export function Signup() {
             <input
               type="password"
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="비밀번호"
               style={{ padding: "10px", margin: "10px" }}
             />
@@ -59,6 +83,8 @@ export function Signup() {
             <input
               type="passwordcheck"
               name="passwordcheck"
+              value={passwordcheck}
+              onChange={(e) => setPasswordCheck(e.target.value)}
               placeholder="비밀번호 확인"
               style={{ padding: "10px", margin: "10px" }}
             />
@@ -73,8 +99,6 @@ export function Signup() {
               style={{ padding: "10px", margin: "10px" }}
             />
             남성
-          </label>
-          <label>
             <input
               type="radio"
               name="gender"
@@ -91,6 +115,8 @@ export function Signup() {
               name="email"
               placeholder="이메일"
               style={{ padding: "10px", margin: "10px" }}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             @
             <input
@@ -108,6 +134,8 @@ export function Signup() {
               name="birth date"
               placeholder="YYYY/MM/dd"
               style={{ padding: "10px", margin: "10px" }}
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
             />
           </label>
         </div>

@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const Contanier = styled.div``;
-export function Notification() {
+const Notification = () => {
   return (
     <>
       <Contanier>
         <div>
+          <h2>공지사항</h2>
           <table>
             <thead>
               <tr>
@@ -29,4 +30,5 @@ export function Notification() {
       </Contanier>
     </>
   );
-}
+};
+export default Notification;

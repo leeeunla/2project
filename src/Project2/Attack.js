@@ -1,8 +1,12 @@
-export function Attack() {
+import styled from "styled-components";
+
+const Contanier = styled.div``;
+const Attack = () => {
   return (
     <>
       <Contanier>
         <div>
+          <h2>공략 게시판</h2>
           <table>
             <thead>
               <tr>
@@ -34,4 +38,5 @@ export function Attack() {
       </Contanier>
     </>
   );
-}
+};
+export default Attack;

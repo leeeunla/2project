@@ -26,8 +26,18 @@ export function Header() {
           <h2 style={{ cursor: "pointer" }}>새소식</h2>
           {menuOpen && (
             <div>
-              <p>공지사항</p>
-              <p>업데이트</p>
+              <Link
+                to="board/0"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p>공지사항</p>
+              </Link>
+              <Link
+                to="board/1"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p>업데이트</p>
+              </Link>
             </div>
           )}
         </div>
@@ -35,9 +45,24 @@ export function Header() {
           <h2 style={{ cursor: "pointer" }}>정보</h2>
           {menuOpen && (
             <div>
-              <p>게임 정보</p>
-              <p>게임 오브젝트</p>
-              <p>맵 정보</p>
+              <Link
+                to="board/2"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p>게임 정보</p>
+              </Link>
+              <Link
+                to="board/3"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p>게임 오브젝트</p>
+              </Link>
+              <Link
+                to="board/4"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p>맵 정보</p>
+              </Link>
             </div>
           )}
         </div>
@@ -45,9 +70,24 @@ export function Header() {
           <h2 style={{ cursor: "pointer" }}>커뮤니티</h2>
           {menuOpen && (
             <div>
-              <p>질문과 답변</p>
-              <p>공략 게시판</p>
-              <p>자유 게시판</p>
+              <Link
+                to="board/5"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p>질문과 답변</p>
+              </Link>
+              <Link
+                to="board/6"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p>공략 게시판</p>
+              </Link>
+              <Link
+                to="board/7"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p>자유 게시판</p>
+              </Link>
             </div>
           )}
         </div>
@@ -55,7 +95,12 @@ export function Header() {
           <h2 style={{ cursor: "pointer" }}>고객센터</h2>
           {menuOpen && (
             <div>
-              <p>1:1 문의</p>
+              <Link
+                to="/quiry"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <p>1:1 문의</p>
+              </Link>
               <p>관리자페이지</p>
             </div>
           )}
