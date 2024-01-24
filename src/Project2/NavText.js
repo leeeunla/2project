@@ -61,6 +61,7 @@ export function NavText() {
             </button>
           </div>
         </Div>
+
         <Header />
         <GameSwiper />
         <Outlet />

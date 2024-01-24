@@ -16,6 +16,7 @@ import { Board } from "./Board";
 import Findid from "./Findid";
 import { Inquiry } from "./Inquiry";
 import { Write } from "./Write";
+import Mypage from "./Mypage";
 
 export const MainContext = createContext();
 const Container = styled.div``;
@@ -38,6 +39,7 @@ export function Main() {
                 <Route path="find" element={<Findid />}></Route>
                 <Route path="quiry" element={<Inquiry />}></Route>
                 <Route path="write" element={<Write />}></Route>
+                <Route path="page" element={<Mypage />}></Route>
               </Routes>
             </div>
           </Container>

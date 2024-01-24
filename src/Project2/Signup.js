@@ -81,7 +81,7 @@ export function Signup() {
         <div>
           <label>
             <input
-              type="passwordcheck"
+              type="password"
               name="passwordcheck"
               value={passwordcheck}
               onChange={(e) => setPasswordCheck(e.target.value)}
