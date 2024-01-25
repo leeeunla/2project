@@ -7,8 +7,17 @@ const PasswordChange = () => {
   return (
     <>
       <Container>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <h2>비밀 번호 변경</h2>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <h2
+            style={{ borderBottom: "3px solid black", paddingBottom: "15px" }}
+          >
+            비밀 번호 변경
+          </h2>
           <label style={{ margin: "10px" }}>
             현재비밀번호 &nbsp;
             <input type="password" placeholder="" style={{ padding: "5px" }} />
