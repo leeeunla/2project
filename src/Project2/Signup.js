@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -8,7 +8,7 @@ const Container = styled.div`
   width: 500px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 300px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -19,17 +19,31 @@ export function Signup() {
   const [name, setName] = useState(""); // 성함
   const [password, setPassword] = useState("");
   const [id, setID] = useState("");
-  const [passwordcheck, setPasswordCheck] = useState(""); // 비밀번호 확인
+  const [passwordcheck, setPasswordCheck] = useState("");
+  // 비밀번호 확인
   const [gender, setGender] = useState("");
   const [birthday, setBirthday] = useState("");
   const [email, setEmail] = useState("");
 
   const [signup, setSignup] = useState();
   const navigate = useNavigate();
+
+  const BirthdayChange = (e) => {
+    const value = e.target.value;
+    const form = value
+      .replace(/\D/g, "")
+      .replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3");
+    setBirthday(form);
+  };
   return (
     <>
+      <div style={{ textAlign: "center", marginTop: "100px" }}>
+        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+          <h1>링크의 모험</h1>
+        </Link>
+      </div>
       <Container>
-        <h1>링크의 모험 회원가입</h1>
+        <h1>회원가입</h1>
         <div>
           <label>
             <input
@@ -133,9 +147,9 @@ export function Signup() {
               type="text"
               name="birth date"
               placeholder="YYYY/MM/dd"
+              onChange={BirthdayChange}
               style={{ padding: "10px", margin: "10px" }}
               value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
             />
           </label>
         </div>

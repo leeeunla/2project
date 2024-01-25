@@ -5,14 +5,11 @@ const Container = styled.div`
   border: 1px solid black;
   width: 300px;
   padding: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 300px;
+  margin: 20px;
 `;
 
 const Findid = () => {
   const [email, setEmail] = useState("");
-  const [modal, setModal] = useState(false);
   const [name, setName] = useState("");
 
   return (

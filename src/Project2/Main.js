@@ -17,6 +17,7 @@ import Findid from "./Findid";
 import { Inquiry } from "./Inquiry";
 import { Write } from "./Write";
 import Mypage from "./Mypage";
+import { Home } from "./Home";
 
 export const MainContext = createContext();
 const Container = styled.div``;
@@ -30,8 +31,11 @@ export function Main() {
           <Container>
             <div>
               <Routes>
-                <Route path="/" element={<NavText />}></Route>
-                <Route path="board/:id" element={<Board />}></Route>
+                <Route path="" element={<NavText />}>
+                  <Route path="/" element={<Home />} />
+                  <Route path="board/:id" element={<Board />} />
+                  <Route path="page" element={<Mypage />} />
+                </Route>
                 <Route path="login" element={<Login />}></Route>
                 <Route path="signup" element={<Signup />}></Route>
                 <Route path="admin/login" element={<Managerlogin />}></Route>
@@ -39,7 +43,6 @@ export function Main() {
                 <Route path="find" element={<Findid />}></Route>
                 <Route path="quiry" element={<Inquiry />}></Route>
                 <Route path="write" element={<Write />}></Route>
-                <Route path="page" element={<Mypage />}></Route>
               </Routes>
             </div>
           </Container>

@@ -18,6 +18,9 @@ export function Header() {
   const handleMenuClose = () => {
     setMenuOpen(false);
   };
+  function closepopup() {
+    window.open("/quiry", "_blank", "width=800,height=400");
+  }
 
   return (
     <>
@@ -96,7 +99,7 @@ export function Header() {
           {menuOpen && (
             <div>
               <Link
-                to="/quiry"
+                onClick={closepopup}
                 style={{ textDecoration: "none", color: "black" }}
               >
                 <p>1:1 문의</p>

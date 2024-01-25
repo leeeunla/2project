@@ -21,7 +21,9 @@ export function Login() {
   function onSubmit(e) {
     e.preventDefault();
   }
-
+  function openpopup() {
+    window.open("find", "_blank", "width=500,height=300");
+  }
   return (
     <>
       <Contanier>
@@ -71,7 +73,10 @@ export function Login() {
             >
               <p>회원가입 &#124;</p>
             </Link>
-            <Link to="/find" style={{ textDecoration: "none", color: "black" }}>
+            <Link
+              onClick={openpopup}
+              style={{ textDecoration: "none", color: "black" }}
+            >
               <p>아이디찾기</p>
             </Link>
           </div>

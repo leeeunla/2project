@@ -63,19 +63,7 @@ export function NavText() {
         </Div>
 
         <Header />
-        <GameSwiper />
         <Outlet />
-        <br />
-        <Put />
-        <br />
-        <br />
-        <br />
-        <br />
-        <Giode />
-        <br />
-        <br />
-        <br />
-        <br />
         <Footer />
       </Container>
     </>
