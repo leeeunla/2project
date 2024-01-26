@@ -11,6 +11,7 @@ export function Writing() {
   return (
     <>
       <Contanier>
+        <br />
         <Content>
           <textarea
             style={{ width: "650px", height: "2rem", padding: "5px" }}

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Contanier = styled.div`
@@ -20,7 +21,12 @@ export function Put() {
         >
           <div style={{ display: "flex", gap: "80px" }}>
             <p>공지사항</p>
-            <p>더보기</p>
+            <Link
+              to="/board/0"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <p>더보기</p>
+            </Link>
           </div>
           <div>
             <p>Link 유저분들께 전체 안내</p>
@@ -38,7 +44,12 @@ export function Put() {
         >
           <div style={{ display: "flex", gap: "80px" }}>
             <p>업데이트</p>
-            <p>더보기</p>
+            <Link
+              to="/board/1"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <p>더보기</p>
+            </Link>
           </div>
           <div>
             <p>2.19(월) 업데이트 안내</p>

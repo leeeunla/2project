@@ -37,10 +37,8 @@ export function Signup() {
   };
   return (
     <>
-      <div style={{ textAlign: "center", marginTop: "100px" }}>
-        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-          <h1>링크의 모험</h1>
-        </Link>
+      <div style={{ textAlign: "center", marginTop: "100px", color: "EB7BCo" }}>
+        <h1>링크의 모험</h1>
       </div>
       <Container>
         <h1>회원가입</h1>

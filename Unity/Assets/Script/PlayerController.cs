@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
         animator.Play(deadAnime);
 
         gameState = "gameover";
-        GameStop(); // 게임 중지
+        GameStop(); // 게임 중지s
         // =====================
         // 게임 오버 연출
         // =====================

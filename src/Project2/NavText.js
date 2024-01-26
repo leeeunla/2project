@@ -12,6 +12,8 @@ const Div = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #ffe1e6;
+  position: relative;
+  z-index: 2;
 `;
 export function NavText() {
   return (

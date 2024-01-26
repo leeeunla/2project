@@ -10,7 +10,8 @@ import { hover } from "@testing-library/user-event/dist/hover";
 
 const Container = styled.div`
   border: 1px solid black;
-  width: 1000px;
+  /* width: 1500px; */
+  border-radius: 25px;
 `;
 const Mypage = () => {
   const [tab, setTab] = useState("회원정보");

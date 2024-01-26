@@ -18,6 +18,8 @@ import { Inquiry } from "./Inquiry";
 import { Write } from "./Write";
 import Mypage from "./Mypage";
 import { Home } from "./Home";
+// import { Chart1 } from "./Chart1";
+import { Chart2 } from "./Chart2";
 
 export const MainContext = createContext();
 const Container = styled.div``;
@@ -35,6 +37,7 @@ export function Main() {
                   <Route path="/" element={<Home />} />
                   <Route path="board/:id" element={<Board />} />
                   <Route path="page" element={<Mypage />} />
+                  <Route path="witing" element={<Writing />} />
                 </Route>
                 <Route path="login" element={<Login />}></Route>
                 <Route path="signup" element={<Signup />}></Route>
@@ -43,6 +46,7 @@ export function Main() {
                 <Route path="find" element={<Findid />}></Route>
                 <Route path="quiry" element={<Inquiry />}></Route>
                 <Route path="write" element={<Write />}></Route>
+                <Route path="chart" element={<Chart2 />}></Route>
               </Routes>
             </div>
           </Container>

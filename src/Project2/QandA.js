@@ -1,41 +1,44 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Contanier = styled.div``;
+const Container = styled.div`
+  color: black;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  margin: 1rem;
+  padding: 1rem;
+`;
 const QandA = () => {
   return (
     <>
-      <Contanier>
-        <div>
-          <h2>질문과 답변</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>글번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+      <Container>
+        <h2 style={{ borderBottom: "1px solid black" }}>질문과 답변</h2>
+        <table>
+          <thead>
+            <tr style={{ border: "1px solid black" }}>
+              <th>말머리</th>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>작성일</th>
+            </tr>
+          </thead>
+          <tbody style={{ textAlign: "center" }}>
+            <tr>
+              <td>15</td>
+              <td>ㅋㅋㅋㅋㅋ</td>
+              <td>코끼리</td>
+              <td>2024-02-14</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style={{ textAlign: "end" }}>
+          <Link to="/witing">
+            <button>글쓰기</button>
+          </Link>
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="댓글을 입력해주세요"
-            style={{ width: "150px", padding: "5px" }}
-          ></input>
-          <button style={{ padding: "5px" }}>등록</button>
-        </div>
-      </Contanier>
+      </Container>
     </>
   );
 };

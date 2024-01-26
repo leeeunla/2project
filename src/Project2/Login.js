@@ -73,12 +73,12 @@ export function Login() {
             >
               <p>회원가입 &#124;</p>
             </Link>
-            <Link
+            <div
               onClick={openpopup}
               style={{ textDecoration: "none", color: "black" }}
             >
               <p>아이디찾기</p>
-            </Link>
+            </div>
           </div>
         </div>
       </Contanier>
