@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
-  color: black;
+  color: white;
   display: flex;
   flex-direction: column;
   border: 1px solid gray;
@@ -13,7 +13,7 @@ const QandA = () => {
   return (
     <>
       <Container>
-        <h2 style={{ borderBottom: "1px solid black" }}>질문과 답변</h2>
+        <h2 style={{ borderBottom: "1px solid white" }}>질문과 답변</h2>
         <table>
           <thead>
             <tr style={{ border: "1px solid black" }}>

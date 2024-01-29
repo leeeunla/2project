@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Contanier = styled.div`
   display: flex;
   justify-content: space-around;
-  background-color: white;
+  color: white;
 `;
 
 export function Put() {
@@ -13,7 +13,7 @@ export function Put() {
       <Contanier>
         <div
           style={{
-            border: "0.5px solid black",
+            border: "0.5px solid white",
             width: "200px",
             padding: "5px",
             borderRadius: "10px",
@@ -23,7 +23,7 @@ export function Put() {
             <p>공지사항</p>
             <Link
               to="/board/0"
-              style={{ textDecoration: "none", color: "black" }}
+              style={{ textDecoration: "none", color: "white" }}
             >
               <p>더보기</p>
             </Link>
@@ -36,7 +36,7 @@ export function Put() {
         </div>
         <div
           style={{
-            border: "0.5px solid black",
+            border: "0.5px solid white",
             width: "200px",
             padding: "5px",
             borderRadius: "10px",
@@ -46,7 +46,7 @@ export function Put() {
             <p>업데이트</p>
             <Link
               to="/board/1"
-              style={{ textDecoration: "none", color: "black" }}
+              style={{ textDecoration: "none", color: "white" }}
             >
               <p>더보기</p>
             </Link>

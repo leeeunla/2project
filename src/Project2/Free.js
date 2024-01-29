@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 const Container = styled.div`
-  color: black;
+  color: white;
   display: flex;
   flex-direction: column;
   border: 1px solid gray;

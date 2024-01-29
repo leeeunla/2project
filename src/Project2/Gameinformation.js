@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   border: 1px solid black;
-  border-radius: 50px;
+  border-radius: 25px;
   margin: 10px;
 
   text-align: center;
@@ -18,8 +18,7 @@ const Gameinformation = () => {
             display: "flex",
             justifyContent: "space-around",
             width: "700px",
-            marginLeft: "250px",
-
+            marginLeft: "10px",
             width: "500px",
           }}
         >
@@ -27,7 +26,7 @@ const Gameinformation = () => {
           <p>아이디:</p>
           <p>닉네임:</p>
         </div>
-        <div style={{ textAlign: "center", marginRight: "250px" }}>
+        <div style={{ textAlign: "center", marginRight: "130px" }}>
           <p>층을 많이 올라간 횟수 : </p>
         </div>
       </Container>

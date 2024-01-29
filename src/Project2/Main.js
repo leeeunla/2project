@@ -20,6 +20,7 @@ import Mypage from "./Mypage";
 import { Home } from "./Home";
 // import { Chart1 } from "./Chart1";
 import { Chart2 } from "./Chart2";
+import Dashboard from "./Dashboard";
 
 export const MainContext = createContext();
 const Container = styled.div``;
@@ -42,11 +43,12 @@ export function Main() {
                 <Route path="login" element={<Login />}></Route>
                 <Route path="signup" element={<Signup />}></Route>
                 <Route path="admin/login" element={<Managerlogin />}></Route>
-                <Route path="admin/signup" element={<ManagerSignup />}></Route>
+                <Route path="admin/signup" element={<ManagerSignup />} />
                 <Route path="find" element={<Findid />}></Route>
                 <Route path="quiry" element={<Inquiry />}></Route>
                 <Route path="write" element={<Write />}></Route>
                 <Route path="chart" element={<Chart2 />}></Route>
+                <Route path="admin/dashboard" element={<Dashboard />}></Route>
               </Routes>
             </div>
           </Container>

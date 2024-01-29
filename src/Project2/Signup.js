@@ -13,6 +13,19 @@ const Container = styled.div`
   flex-direction: column;
   text-align: center;
 `;
+const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20230411/pngtree-beautiful-moon-background-image_2357383.jpg");
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  z-index: -1;
+`;
 
 export function Signup() {
   const [username, setUsername] = useState(""); // 닉네임
@@ -38,9 +51,12 @@ export function Signup() {
   return (
     <>
       <div style={{ textAlign: "center", marginTop: "100px", color: "EB7BCo" }}>
-        <h1>링크의 모험</h1>
+        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+          <h1>링크의 모험</h1>
+        </Link>
       </div>
       <Container>
+        <BackgroundImage />
         <h1>회원가입</h1>
         <div>
           <label>

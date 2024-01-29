@@ -7,9 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useRef } from "react";
 
-const Container = styled.div`
-  background-color: white;
-`;
+const Container = styled.div``;
 
 const GameSwiper = () => {
   const progressCircle = useRef(null);
@@ -25,7 +23,7 @@ const GameSwiper = () => {
           delay: 4500,
           disableOnInteraction: false,
         }}
-        style={{ width: "900px", height: "400px", backgroundColor: "white" }}
+        style={{ width: "1500px", height: "400px", backgroundColor: "white" }}
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         // slidesOffsetAfter={0}
         // slidesOffsetBefore={0}
@@ -41,25 +39,25 @@ const GameSwiper = () => {
         <SwiperSlide>
           <img
             src="https://cdn.pixabay.com/photo/2014/04/05/11/40/chess-316658_1280.jpg"
-            style={{ width: "900px", height: "400px" }}
+            style={{ width: "1500px", height: "400px" }}
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="https://i.pinimg.com/736x/eb/3a/72/eb3a7218ef974af7f39d18daf508a167.jpg"
-            style={{ width: "900px", height: "400px" }}
+            style={{ width: "1500px", height: "400px" }}
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="https://cdn.pixabay.com/photo/2022/12/04/15/10/game-7634718_1280.jpg"
-            style={{ width: "900px", height: "400px" }}
+            style={{ width: "1500px", height: "400px" }}
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="https://cdn.pixabay.com/photo/2015/05/10/21/16/board-761586_1280.jpg"
-            style={{ width: "900px", height: "400px" }}
+            style={{ width: "1500px", height: "400px" }}
           />
         </SwiperSlide>
         ...

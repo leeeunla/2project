@@ -14,7 +14,7 @@ const Findid = () => {
 
   return (
     <Container>
-      <form
+      <div
         style={{
           display: "flex",
           flexDirection: "column",
@@ -52,7 +52,7 @@ const Findid = () => {
             아이디 찾기
           </button>
         </div>
-      </form>
+      </div>
     </Container>
   );
 };

@@ -1,16 +1,14 @@
 import styled from "styled-components";
+import { Dashboardchart } from "./Dashboardchart";
 
-//관리자 대시보드 (사용자관리)
 const Container = styled.div``;
-const UserList = () => {
+const Dashboard1 = () => {
   return (
     <>
       <Container>
-        <div>
-          <h2></h2>
-        </div>
+        <Dashboardchart />
       </Container>
     </>
   );
 };
-export default UserList;
+export default Dashboard1;

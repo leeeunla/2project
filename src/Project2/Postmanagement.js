@@ -1,4 +1,4 @@
-//게시물 관리
+//게시물 관리 (마이페이지)
 
 import styled from "styled-components";
 

@@ -6,11 +6,10 @@ import Withdrawal from "./Withdrawal";
 import Gameinformation from "./Gameinformation";
 import Postmanagement from "./Postmanagement";
 import Account from "./Account";
-import { hover } from "@testing-library/user-event/dist/hover";
 
 const Container = styled.div`
   border: 1px solid black;
-  /* width: 1500px; */
+  width: 800px;
   border-radius: 25px;
 `;
 const Mypage = () => {

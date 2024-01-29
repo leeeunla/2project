@@ -3,10 +3,10 @@ import { TfiTwitterAlt } from "react-icons/tfi";
 import { FaYoutube, FaFacebookF } from "react-icons/fa";
 
 const Div = styled.div`
-  border-top: 1px solid black;
+  border-top: 1px solid white;
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  color: white;
 `;
 
 export function Footer() {

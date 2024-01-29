@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Contanier = styled.div`
@@ -47,7 +48,9 @@ export function Managerlogin() {
           >
             로그인
           </button>
-          <p>회원가입</p>
+          <Link to="admin/signup">
+            <p>회원가입</p>
+          </Link>
         </div>
       </Contanier>
     </>

@@ -6,8 +6,8 @@ export function Game() {
         <table>
           <thead>
             <tr>
-              <th>글번호</th>
-              <th>제목</th>
+              <th>조작법</th>
+              <th>게임시작</th>
               <th></th>
               <th></th>
             </tr>
