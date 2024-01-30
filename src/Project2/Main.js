@@ -18,18 +18,21 @@ import { Inquiry } from "./Inquiry";
 import { Write } from "./Write";
 import Mypage from "./Mypage";
 import { Home } from "./Home";
+
 // import { Chart1 } from "./Chart1";
 import { Chart2 } from "./Chart2";
-import Dashboard from "./Dashboard";
+import Administratorpage from "./Administratorpage";
+import { AdminWriting } from "./AdminWriting";
+// import { QueryClient, useQuery } from "react-query";
 
+// const client = new QueryClient();
 export const MainContext = createContext();
 const Container = styled.div``;
-
 export function Main() {
-  const [mainList, SetMainList] = useState(Board);
+  // const { data, isLoading } = useQuery("main");
   return (
     <>
-      <MainContext.Provider value={{ mainList, SetMainList }}>
+      <MainContext.Provider>
         <BrowserRouter>
           <Container>
             <div>
@@ -48,7 +51,11 @@ export function Main() {
                 <Route path="quiry" element={<Inquiry />}></Route>
                 <Route path="write" element={<Write />}></Route>
                 <Route path="chart" element={<Chart2 />}></Route>
-                <Route path="admin/dashboard" element={<Dashboard />}></Route>
+                <Route
+                  path="admin/dashboard"
+                  element={<Administratorpage />}
+                ></Route>
+                <Route path="admin/writing" element={<AdminWriting />}></Route>
               </Routes>
             </div>
           </Container>

@@ -31,11 +31,21 @@ const BackgroundImage = styled.div`
 export function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  function onSubmit(e) {
-    e.preventDefault();
-  }
+  const [error, setError] = useState("");
+
   function openpopup() {
     window.open("find", "_blank", "width=500,height=300");
+  }
+  function onSubmit(e) {
+    e.preventDefault();
+    if (id === "") {
+      setError("아이디를 입력해 주세요!");
+      return;
+    }
+    if (password === "") {
+      setError("비밀번호를 입력하세요");
+      return;
+    }
   }
   return (
     <>
@@ -53,15 +63,20 @@ export function Login() {
                 padding: "12px",
                 width: "220px",
               }}
-            ></input>
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+            />
           </p>
           <p>
             <input
               type="password"
               placeholder="비밀번호"
               style={{ padding: "12px", width: "220px" }}
-            ></input>
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </p>
+          <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
           <button
             style={{
               width: "150px",
@@ -71,6 +86,7 @@ export function Login() {
               cursor: "pointer",
               borderWidth: "1px",
             }}
+            onClick={onSubmit}
           >
             로그인
           </button>

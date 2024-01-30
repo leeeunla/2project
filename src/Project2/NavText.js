@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { Header } from "./Header";
 import { Link, Outlet } from "react-router-dom";
-import GameSwiper from "./GameSwiper";
-import { Giode } from "./Giode";
-import { Put } from "./Put";
 import { Footer } from "./Footer";
 
 const Container = styled.div``;
@@ -65,7 +62,7 @@ export function NavText() {
                 로그인
               </button>
             </Link>
-            <Link to="admin/login">
+            <Link to="/admin/login">
               <button
                 style={{
                   backgroundColor: "transparent",

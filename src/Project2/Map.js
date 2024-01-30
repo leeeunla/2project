@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   color: white;
+  border: 1px solid white;
 `;
 const Map = () => {
   return (

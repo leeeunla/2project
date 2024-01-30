@@ -48,7 +48,7 @@ export function Managerlogin() {
           >
             로그인
           </button>
-          <Link to="admin/signup">
+          <Link to="/admin/signup">
             <p>회원가입</p>
           </Link>
         </div>
