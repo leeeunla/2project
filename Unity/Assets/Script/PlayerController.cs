@@ -123,8 +123,18 @@ public class PlayerController : MonoBehaviour
         {
             GameOver();
         }
+        else if (collision.gameObject.tag == "ScoreItem")
+        {
+            // 점수 아이템
+            // ItemData 가져오기
+            ItemData item = collision.gameObject.GetComponent<ItemData>();
+            // 점수 얻기
+            score = item.value;
+            // 아이템 제거
+            Destroy(collision.gameObject);
+        }
 
-    }
+}
 
     public void Goal()
     {

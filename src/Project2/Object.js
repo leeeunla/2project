@@ -9,6 +9,32 @@ const Container = styled.div`
   padding: 1rem;
 `;
 export function Object() {
+  const data = [
+    {
+      heading: "말머리",
+      title: "제목",
+      writer: "작성자",
+      cTime: "작성일",
+    },
+    {
+      heading: "1",
+      title: "함정",
+      writer: "운영자",
+      cTime: "2024-02-08",
+    },
+    {
+      heading: "2",
+      title: "코인",
+      writer: "운영자",
+      cTime: "2024-02-09",
+    },
+    {
+      heading: "3",
+      title: "톱니바퀴",
+      writer: "운영자",
+      cTime: "2024-02-10",
+    },
+  ];
   return (
     <>
       <Container>
@@ -16,21 +42,15 @@ export function Object() {
           게임오브젝트 (구조물)
         </h2>
         <table>
-          <thead>
-            <tr style={{ border: "1px solid black" }}>
-              <th>말머리</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-            </tr>
-          </thead>
           <tbody style={{ textAlign: "center" }}>
-            <tr>
-              <td>1</td>
-              <td>함정</td>
-              <td>운영자</td>
-              <td>2024-02-15</td>
-            </tr>
+            {data.map((object, index) => (
+              <tr key={index}>
+                <td>{object.heading}</td>
+                <td>{object.title}</td>
+                <td>{object.writer}</td>
+                <td>{object.cTime}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </Container>

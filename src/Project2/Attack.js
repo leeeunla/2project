@@ -10,26 +10,64 @@ const Contanier = styled.div`
   padding: 1rem;
 `;
 const Attack = () => {
+  const data = [
+    {
+      heading: "말머리",
+      title: "제목",
+      writer: "작성자",
+      cTime: "작성일",
+    },
+    {
+      heading: "1",
+      title: "1층 톱날 공략법",
+      writer: "jends",
+      cTime: "2024-02-05",
+    },
+    {
+      heading: "2",
+      title: "모든 코인 얻는법",
+      writer: "gksjd",
+      cTime: "2024-02-06",
+    },
+    {
+      heading: "3",
+      title: "톱날에 죽지 않고 살 수 있는법",
+      writer: "jane",
+      cTime: "2024-02-07",
+    },
+    {
+      heading: "4",
+      title: "원 위에서 한번에 블럭으로 점프하는 법",
+      writer: "dnks",
+      cTime: "2024-02-08",
+    },
+    {
+      heading: "5",
+      title: "2층 완전 공략",
+      writer: "tanes",
+      cTime: "2024-02-09",
+    },
+    {
+      heading: "6",
+      title: "극악의 난이도 3층 공략법",
+      writer: "toms",
+      cTime: "2024-02-10",
+    },
+  ];
   return (
     <>
       <Contanier>
         <h2 style={{ borderBottom: "1px solid black" }}>공략 게시판</h2>
         <table>
-          <thead>
-            <tr style={{ border: "1px solid black" }}>
-              <th>말머리</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-            </tr>
-          </thead>
           <tbody style={{ textAlign: "center" }}>
-            <tr>
-              <td>15</td>
-              <td>ㅋㅋㅋㅋㅋ</td>
-              <td>코뿔소</td>
-              <td>2024-02-15</td>
-            </tr>
+            {data.map((Att, index) => (
+              <tr key={index}>
+                <td>{Att.heading}</td>
+                <td>{Att.title}</td>
+                <td>{Att.writer}</td>
+                <td>{Att.cTime}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
 

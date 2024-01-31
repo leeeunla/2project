@@ -22,7 +22,7 @@ export function Giode() {
             color: "gray",
           }}
         >
-          <p
+          <div
             style={{
               border: "1px solid black",
               padding: "50px",
@@ -30,9 +30,11 @@ export function Giode() {
               borderRadius: "10px",
             }}
           >
-            게임정보
-          </p>
-          <p
+            <p>
+              링크의 모험에 <br /> 오신걸 환영합니다.
+            </p>
+          </div>
+          <div
             style={{
               border: "1px solid black",
               padding: "50px",
@@ -40,9 +42,11 @@ export function Giode() {
               borderRadius: "10px",
             }}
           >
-            게임 오브젝트
-          </p>
-          <p
+            <p>
+              어떠한 힘정들이 <br /> 있을끼요~?
+            </p>
+          </div>
+          <div
             style={{
               border: "1px solid black",
               padding: "50px",
@@ -50,8 +54,10 @@ export function Giode() {
               borderRadius: "10px",
             }}
           >
-            맵 정보
-          </p>
+            <p>
+              어떠한 맵이 <br /> 기다리고 있을까요?
+            </p>
+          </div>
         </div>
       </Contanier>
     </>

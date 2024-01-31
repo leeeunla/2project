@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Container = styled.div`
   border: 1px solid black;
   border-radius: 15px;
-  width: 700px;
+  width: 800px;
 `;
 export function Dashboardchart() {
   const data = [];
@@ -16,7 +16,7 @@ export function Dashboardchart() {
         <Bar
           style={{
             position: "relative",
-            height: "300px",
+            height: "350px",
             paddingRight: "500px",
           }}
           data={{

@@ -19,7 +19,6 @@ const BackgroundImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20230411/pngtree-beautiful-moon-background-image_2357383.jpg");
 
   background-repeat: no-repeat;
   background-position: center center;
@@ -172,7 +171,7 @@ export function Signup() {
             style={{
               padding: "10px",
               margin: "10px",
-              width: "120px",
+              width: "250px",
             }}
           >
             확인

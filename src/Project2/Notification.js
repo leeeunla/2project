@@ -10,26 +10,46 @@ const Contanier = styled.div`
 `;
 
 const Notification = () => {
+  const data = [
+    {
+      heading: "말머리",
+      title: "제목",
+      writer: "작성자",
+      cTime: "작성일",
+    },
+    {
+      heading: "1",
+      title: "Link 유저분들께 전체 안내",
+      writer: "운영자",
+      cTime: "2024-02-05",
+    },
+    {
+      heading: "2",
+      title: "현재 발생중인 오류안내",
+      writer: "운영자",
+      cTime: "2024-02-06",
+    },
+    {
+      heading: "3",
+      title: "서버 불안정 현상 안내",
+      writer: "운영자",
+      cTime: "2024-02-07",
+    },
+  ];
   return (
     <>
       <Contanier>
-        <h2 style={{ borderBottom: "1px solid black" }}>공지사항</h2>
+        <h2 style={{ borderBottom: "1px solid white" }}>공지사항</h2>
         <table>
-          <thead>
-            <tr style={{ border: "1px solid black" }}>
-              <th>말머리</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-            </tr>
-          </thead>
           <tbody style={{ textAlign: "center" }}>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            {data.map((notice, index) => (
+              <tr key={index}>
+                <td>{notice.heading}</td>
+                <td>{notice.title}</td>
+                <td>{notice.writer}</td>
+                <td>{notice.cTime}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </Contanier>

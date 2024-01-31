@@ -12,7 +12,6 @@ const Container = styled.div`
   border: 1px solid black;
   display: flex;
   text-align: center;
-  cursor: pointer;
 `;
 const Administratorpage = () => {
   const [click, setClick] = useState("보드");
@@ -23,7 +22,7 @@ const Administratorpage = () => {
   return (
     <>
       <Container>
-        <div style={{ backgroundColor: "gray" }}>
+        <div style={{ backgroundColor: "gray", cursor: "pointer" }}>
           <h2>링크의 모험</h2>
           <p>운영자</p>
           <p onClick={() => dashboardclick("대시보드")}>대시보드</p>

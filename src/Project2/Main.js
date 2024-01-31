@@ -23,6 +23,8 @@ import { Home } from "./Home";
 import { Chart2 } from "./Chart2";
 import Administratorpage from "./Administratorpage";
 import { AdminWriting } from "./AdminWriting";
+import { Detalis0 } from "./Detalis0";
+import { Detalis } from "./Details";
 // import { QueryClient, useQuery } from "react-query";
 
 // const client = new QueryClient();
