@@ -23,8 +23,14 @@ import { Home } from "./Home";
 import { Chart2 } from "./Chart2";
 import Administratorpage from "./Administratorpage";
 import { AdminWriting } from "./AdminWriting";
-import { Detalis0 } from "./Detalis0";
-import { Detalis } from "./Details";
+import { FreeDetails } from "./FreeDetails";
+import { UpdateDetalis } from "./UpdateDetalis";
+import { NotificationDetalis } from "./NotificationDetalis";
+import { QandAdetalis0 } from "./QandADetalis0";
+import { AttackDetails } from "./AttackDetails";
+import { GameDetails } from "./GameDetails";
+import { ObjectDetalis } from "./ObjectDetails";
+
 // import { QueryClient, useQuery } from "react-query";
 
 // const client = new QueryClient();
@@ -44,7 +50,15 @@ export function Main() {
                   <Route path="board/:id" element={<Board />} />
                   <Route path="page" element={<Mypage />} />
                   <Route path="witing" element={<Writing />} />
+                  <Route path="/update/:id" element={<UpdateDetalis />} />
+                  <Route path="/notice/:id" element={<NotificationDetalis />} />
+                  <Route path="/Free/:id" element={<FreeDetails />} />
+                  <Route path="/QA/:id" element={<QandAdetalis0 />} />
+                  <Route path="/Attack/:id" element={<AttackDetails />} />
+                  <Route path="/Game/:id" element={<GameDetails />} />
+                  <Route path="/Object/:id" element={<ObjectDetalis />} />
                 </Route>
+
                 <Route path="login" element={<Login />}></Route>
                 <Route path="signup" element={<Signup />}></Route>
                 <Route path="admin/login" element={<Managerlogin />}></Route>

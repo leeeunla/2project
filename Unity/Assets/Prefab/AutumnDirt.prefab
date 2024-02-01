@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2399201755127601688}
   - component: {fileID: 5492747697718217447}
   - component: {fileID: 2272939196167228635}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AutumnDirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}

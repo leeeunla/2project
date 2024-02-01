@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1135114286362821898}
   - component: {fileID: 1135114286362821897}
   - component: {fileID: 1135114286362821902}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Player2 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
   jump: 9
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1
   stopAnime: PlayerStop2
   moveAnime: PlayerWalk2
   jumpAnime: PlayerJump2

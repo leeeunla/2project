@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
 
     public int score = 0; // Á¡¼ö
 
+    float jumpInterval = 0.5f;
+    float timeSinceLastJump = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,9 +59,18 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, transform.localScale.z);
         }
 
+        timeSinceLastJump = timeSinceLastJump + Time.deltaTime;
         if (Input.GetButtonDown("Jump"))
         {
-            Jump();
+            if (timeSinceLastJump > jumpInterval)
+            {
+                Jump();
+                timeSinceLastJump = 0;
+            }
+            else
+            {
+                goJump = false;
+            }
         }
     }
 
@@ -79,7 +91,8 @@ public class PlayerController : MonoBehaviour
         if (onGround && goJump)
         {
             Vector2 jumpPw = new Vector2(0, jump);
-            rbody.AddForce(jumpPw, ForceMode2D.Impulse);
+            /*rbody.AddForce(jumpPw, ForceMode2D.Impulse);*/
+            rbody.velocity = new Vector2(rbody.velocity.x, jump);
             goJump = false;
         }
 
@@ -134,7 +147,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-}
+    }
 
     public void Goal()
     {

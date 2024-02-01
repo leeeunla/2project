@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5620790662356046446}
   - component: {fileID: 5620790662356046447}
   - component: {fileID: 5620790662356046444}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WinterDirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
