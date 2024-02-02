@@ -32,6 +32,8 @@ export function Login() {
       setError("비밀번호를 입력하세요");
       return;
     }
+    // 로그인 성공 시 메인 페이지로 이동
+    window.location.href = "/";
   }
   return (
     <>

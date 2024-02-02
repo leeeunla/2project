@@ -56,7 +56,7 @@ export function Free() {
   return (
     <>
       <Container>
-        <h2 style={{ borderBottom: "1px solid black" }}>자유 게시판</h2>
+        <h2 style={{ borderBottom: "1px solid white" }}>자유 게시판</h2>
         <table>
           <tbody style={{ textAlign: "center" }}>
             {data.map((free, index) => (

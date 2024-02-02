@@ -1,11 +1,6 @@
 import { createContext, useState } from "react";
-import { Footer } from "./Footer";
-import GameSwiper from "./GameSwiper";
-import { Giode } from "./Giode";
-import { Header } from "./Header";
 import { Login } from "./Login";
 import { NavText } from "./NavText";
-import { Put } from "./Put";
 import { Signup } from "./Signup";
 import { Writing } from "./Writing";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -23,13 +18,15 @@ import { Home } from "./Home";
 import { Chart2 } from "./Chart2";
 import Administratorpage from "./Administratorpage";
 import { AdminWriting } from "./AdminWriting";
-import { FreeDetails } from "./FreeDetails";
+
 import { UpdateDetalis } from "./UpdateDetalis";
 import { NotificationDetalis } from "./NotificationDetalis";
 import { QandAdetalis0 } from "./QandADetalis0";
 import { AttackDetails } from "./AttackDetails";
 import { GameDetails } from "./GameDetails";
 import { ObjectDetalis } from "./ObjectDetails";
+import FreeDetails from "./FreeDetails";
+import FreeComment from "./FreeComment";
 
 // import { QueryClient, useQuery } from "react-query";
 
@@ -53,6 +50,7 @@ export function Main() {
                   <Route path="/update/:id" element={<UpdateDetalis />} />
                   <Route path="/notice/:id" element={<NotificationDetalis />} />
                   <Route path="/Free/:id" element={<FreeDetails />} />
+
                   <Route path="/QA/:id" element={<QandAdetalis0 />} />
                   <Route path="/Attack/:id" element={<AttackDetails />} />
                   <Route path="/Game/:id" element={<GameDetails />} />

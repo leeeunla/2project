@@ -64,7 +64,7 @@ const Attack = () => {
   return (
     <>
       <Contanier>
-        <h2 style={{ borderBottom: "1px solid black" }}>공략 게시판</h2>
+        <h2 style={{ borderBottom: "1px solid white" }}>공략 게시판</h2>
         <table>
           <tbody style={{ textAlign: "center" }}>
             {data.map((Att, index) => (

@@ -1,5 +1,8 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
+import FreeComment from "./FreeComment";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 //상세페이지(게시판에서 글을 클릭시 보이게 하려는 것으로 만듬!)
 const Container = styled.div`
@@ -10,10 +13,11 @@ const Container = styled.div`
   margin: 1rem;
   padding: 1rem;
 `;
-export function FreeDetails() {
+const FreeDetails = () => {
   const data = [
     {},
     {
+      name: 1,
       heading: "1",
       title: "오늘 점심 뭐먹지?",
       text: "점심 뭐 먹을지 추천좀 대신 먹어드림ㅋ",
@@ -21,6 +25,7 @@ export function FreeDetails() {
       createDate: "2024-02-05",
     },
     {
+      name: 2,
       heading: "2",
       title: "내가 재미있는 얘기해줄까?",
       text: "주말 오려면 2일 남음ㅋㅋㅋ ",
@@ -28,6 +33,7 @@ export function FreeDetails() {
       createDate: "2024-02-06",
     },
     {
+      name: 3,
       heading: "3",
       title: "아몬드가 죽으면?",
       text: "다이아몬드ㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
@@ -35,6 +41,7 @@ export function FreeDetails() {
       createDate: "2024-02-07",
     },
     {
+      name: 4,
       heading: "4",
       title: "운영진들은 난이도 하향해라",
       text: "난이도 실화냐고 니네도 못 꺠는 게임 우리도 깨라고 하지 마라! 난이도 하향해라!!",
@@ -42,6 +49,7 @@ export function FreeDetails() {
       createDate: "2024-02-08",
     },
     {
+      name: 5,
       heading: "5",
       title: "이야 패치한 거 봄?",
       text: "패치한 거 겁나 개 같던데 자게 보긴 한데?",
@@ -52,6 +60,7 @@ export function FreeDetails() {
   const { id } = useParams();
   const selectedIndex = parseInt(id); // index 값을 숫자로 변환
   const selectedFree = data[selectedIndex];
+
   return (
     <>
       <Container>
@@ -66,15 +75,34 @@ export function FreeDetails() {
         ) : (
           <p>선택한 자유 정보가 없습니다.</p>
         )}
-        <div>
+        <Link to="/board/7">
+          <GiHamburgerMenu
+            style={{
+              width: "40px",
+              height: "30px",
+              fontSize: "30px",
+              color: "white",
+              border: "1px solid white",
+            }}
+          />
+        </Link>
+        <div style={{ display: "flex", marginBottom: "5px", marginTop: "5px" }}>
           <input
             type="text"
             placeholder="댓글을 입력해주세요"
-            style={{ width: "150px", padding: "5px" }}
+            style={{
+              width: "200px",
+              height: "20px",
+              padding: "5px",
+            }}
           ></input>
-          <button style={{ padding: "5px" }}>등록</button>
+          <button style={{ padding: "5px", width: "50px" }} onClick={() => {}}>
+            등록
+          </button>
         </div>
+        <FreeComment index={selectedIndex} />
       </Container>
     </>
   );
-}
+};
+export default FreeDetails;

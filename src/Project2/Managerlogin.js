@@ -48,7 +48,10 @@ export function Managerlogin() {
           >
             로그인
           </button>
-          <Link to="/admin/signup">
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to="/admin/signup"
+          >
             <p>회원가입</p>
           </Link>
         </div>

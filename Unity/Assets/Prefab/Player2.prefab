@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5831578714350528796}
   - component: {fileID: 5831578714350528799}
   - component: {fileID: 5831578714350528798}
+  - component: {fileID: 7410703131947877961}
   - component: {fileID: 5831578714350528793}
-  - component: {fileID: 5831578714350528797}
   - component: {fileID: 5831578714350528786}
   m_Layer: 3
   m_Name: Player2
@@ -109,6 +109,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7410703131947877961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5831578714350528795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703af808916b148488f976da3717b004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  direction: left
+  range: 0
 --- !u!50 &5831578714350528793
 Rigidbody2D:
   serializedVersion: 4
@@ -130,29 +145,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5831578714350528797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5831578714350528795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 427c9e78feedb574d83a1a47728dd2c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4
-  jump: 7.7
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  stopAnime: Stop
-  moveAnime: Walk
-  jumpAnime: Walk
-  goalAnime: PlayerGoal
-  deadAnime: Death
-  score: 0
 --- !u!70 &5831578714350528786
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

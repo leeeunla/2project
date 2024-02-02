@@ -56,6 +56,8 @@ export function NotificationDetalis() {
         <Link to="/board/0">
           <GiHamburgerMenu
             style={{
+              width: "40px",
+              height: "30px",
               fontSize: "30px",
               color: "white",
               border: "1px solid white",

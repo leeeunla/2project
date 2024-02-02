@@ -50,7 +50,13 @@ export function Signup() {
   return (
     <>
       <div style={{ textAlign: "center", marginTop: "100px", color: "EB7BCo" }}>
-        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+        <Link
+          to="/"
+          style={{
+            textDecoration: "none",
+            color: "#6495Ed",
+          }}
+        >
           <h1>링크의 모험</h1>
         </Link>
       </div>
@@ -172,9 +178,14 @@ export function Signup() {
               padding: "10px",
               margin: "10px",
               width: "250px",
+              borderRadius: "5px",
+              backgroundColor: "#6495Ed",
+              cursor: "pointer",
+              borderWidth: "1px",
+              color: "white",
             }}
           >
-            확인
+            회원가입
           </button>
         </div>
       </Container>

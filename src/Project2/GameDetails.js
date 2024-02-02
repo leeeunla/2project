@@ -1,5 +1,7 @@
-import { useParams } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
+
 const Container = styled.div`
   color: white;
   display: flex;
@@ -44,6 +46,17 @@ export function GameDetails() {
         ) : (
           <p>선택한 게임 정보가 없습니다.</p>
         )}
+        <Link to="/board/2">
+          <GiHamburgerMenu
+            style={{
+              width: "40px",
+              height: "30px",
+              fontSize: "30px",
+              color: "white",
+              border: "1px solid white",
+            }}
+          />
+        </Link>
       </Container>
     </>
   );

@@ -1,5 +1,7 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
+import AttackComment from "./AttackComment";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Container = styled.div`
   color: white;
@@ -72,14 +74,32 @@ export function AttackDetails() {
         ) : (
           <p>선택한 공략 정보가 없습니다.</p>
         )}
-        <div>
+        <Link to="/board/6">
+          <GiHamburgerMenu
+            style={{
+              width: "40px",
+              height: "30px",
+              fontSize: "30px",
+              color: "white",
+              border: "1px solid white",
+            }}
+          />
+        </Link>
+        <div style={{ display: "flex", marginBottom: "5px", marginTop: "5px" }}>
           <input
             type="text"
             placeholder="댓글을 입력해주세요"
-            style={{ width: "150px", padding: "5px" }}
+            style={{
+              width: "200px",
+              height: "20px",
+              padding: "5px",
+            }}
           ></input>
-          <button style={{ padding: "5px" }}>등록</button>
+          <button style={{ padding: "5px", width: "50px" }} onClick={() => {}}>
+            등록
+          </button>
         </div>
+        <AttackComment index={selectedIndex} />
       </Container>
     </>
   );
