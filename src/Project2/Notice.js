@@ -13,7 +13,6 @@ const Contanier = styled.div`
 
 const Notice = () => {
   const [data, setData] = useState();
-
   useEffect(() => {
     apiGetNo();
   }, []);

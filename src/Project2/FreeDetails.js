@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import FreeComment from "./FreeComment";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -14,63 +14,87 @@ const Container = styled.div`
   padding: 1rem;
 `;
 const FreeDetails = () => {
-  const data = [
-    {},
-    {
-      name: 1,
-      heading: "1",
-      title: "오늘 점심 뭐먹지?",
-      text: "점심 뭐 먹을지 추천좀 대신 먹어드림ㅋ",
-      writer: "dnmks68",
-      createDate: "2024-02-05",
-    },
-    {
-      name: 2,
-      heading: "2",
-      title: "내가 재미있는 얘기해줄까?",
-      text: "주말 오려면 2일 남음ㅋㅋㅋ ",
-      writer: "hom",
-      createDate: "2024-02-06",
-    },
-    {
-      name: 3,
-      heading: "3",
-      title: "아몬드가 죽으면?",
-      text: "다이아몬드ㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
-      writer: "foge",
-      createDate: "2024-02-07",
-    },
-    {
-      name: 4,
-      heading: "4",
-      title: "운영진들은 난이도 하향해라",
-      text: "난이도 실화냐고 니네도 못 꺠는 게임 우리도 깨라고 하지 마라! 난이도 하향해라!!",
-      writer: "tom",
-      createDate: "2024-02-08",
-    },
-    {
-      name: 5,
-      heading: "5",
-      title: "이야 패치한 거 봄?",
-      text: "패치한 거 겁나 개 같던데 자게 보긴 한데?",
-      writer: "longs",
-      createDate: "2024-02-09",
-    },
-  ];
+  const [data, setData] = useState();
+  const [comment, setComments] = useState();
+  const [inputComment, setInputComment] = useState();
   const { id } = useParams();
-  const selectedIndex = parseInt(id); // index 값을 숫자로 변환
-  const selectedFree = data[selectedIndex];
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    apiGetFreeByID(id);
+  }, []);
+
+  async function apiGetFreeByID(id) {
+    const response = await fetch(`http://localhost:8080/api/board-any/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => response.json());
+
+    console.log(response);
+    if (response.resultCode === "SUCCESS") {
+      setData(response.data);
+      apiGetComments(id);
+    } else {
+      //에러 코드 작성
+    }
+  }
+  async function apiGetComments(boardId) {
+    const response = await fetch(
+      `http://localhost:8080/api/comment/${boardId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((response) => response.json());
+
+    console.log(response);
+    if (response.resultCode === "SUCCESS") {
+      setComments(response.data);
+    } else {
+      //에러 코드 작성
+    }
+  }
+  async function apiWriteComment(boardId) {
+    const user = JSON.parse(sessionStorage.getItem("loginState"));
+    if (!user) {
+      alert("로그인을 해주세요");
+      navigate("/login");
+    } else {
+      const comment = {
+        author: user.username,
+        text: inputComment,
+        author: boardId,
+      };
+      const response = await fetch(`http://localhost:8080/api/comment`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((response) => response.json());
+
+      console.log(response);
+      if (response.resultCode === "SUCCESS") {
+        setComments((prev) => [...prev, response.data]);
+      } else {
+        //에러 코드 추가
+      }
+    }
+  }
 
   return (
     <>
       <Container>
         <h2 style={{ borderBottom: "1px solid white" }}>자유게시판</h2>
-        {selectedFree ? (
+        {data ? (
           <>
-            {selectedFree.title && <h3>{selectedFree.title}</h3>}
-            {selectedFree.text && <p>{selectedFree.text}</p>}
-            <p>작성자: {selectedFree.writer}</p>
-            <p>작성일: {selectedFree.createDate}</p>
+            <h3>{data.title}</h3>
+            <p>{data.text}</p>
+            <p>작성자: {data.author.username}</p>
+            <p>작성일: {data.createAt}</p>
           </>
         ) : (
           <p>선택한 자유 정보가 없습니다.</p>
@@ -96,11 +120,9 @@ const FreeDetails = () => {
               padding: "5px",
             }}
           ></input>
-          <button style={{ padding: "5px", width: "50px" }} onClick={() => {}}>
-            등록
-          </button>
+          <button style={{ padding: "5px", width: "50px" }}>등록</button>
         </div>
-        <FreeComment index={selectedIndex} />
+        <FreeComment />
       </Container>
     </>
   );

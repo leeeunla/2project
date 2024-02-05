@@ -42,6 +42,12 @@ export function Writing() {
         navigate("/board/5");
       } else {
         // 에러핸들링 코드 추가
+        if (response.resultCode === "ERROR") {
+          alert(
+            "글 작성이 되지않았습니다.입력해주시고 확인을 눌러주세요. 감사합니다."
+          );
+          navigate("/writing");
+        }
       }
     }
   }

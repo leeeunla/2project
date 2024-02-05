@@ -12,7 +12,7 @@ const Container = styled.div`
   margin: 1rem;
   padding: 1rem;
 `;
-export function NotificationDetalis() {
+export function NoticeDetalis() {
   const [data, setData] = useState();
   const { id } = useParams();
 
@@ -32,7 +32,9 @@ export function NotificationDetalis() {
     if (response.resultCode === "SUCCESS") {
       setData(response.data);
     } else {
-      // 에러핸들링 코드 추가
+      if (response.resultCode === "ERROR") {
+        setData(response.data);
+      }
     }
   }
 

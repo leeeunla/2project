@@ -122,12 +122,17 @@ export function QandAdetalis0() {
               height: "20px",
               padding: "5px",
             }}
+            value={inputComment}
+            onChange={(e) => setInputComment(e.target.value)}
           ></input>
-          <button style={{ padding: "5px", width: "50px" }} onClick={() => {}}>
+          <button
+            style={{ padding: "5px", width: "50px" }}
+            onClick={() => apiWriteComment(data.id)}
+          >
             등록
           </button>
         </div>
-        <QandAComment />
+        {comments ? <QandAComment comments={comments} /> : null}
       </Container>
     </>
   );

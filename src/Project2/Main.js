@@ -18,13 +18,14 @@ import Administratorpage from "./Administratorpage";
 import { AdminWriting } from "./AdminWriting";
 
 import { UpdateDetalis } from "./UpdateDetalis";
-import { NotificationDetalis } from "./NotificationDetalis";
+
 import { QandAdetalis0 } from "./QandADetalis0";
 import { AttackDetails } from "./AttackDetails";
 import { GameDetails } from "./GameDetails";
 import { ObjectDetails } from "./ObjectDetails";
 import MapDetails from "./MapDetails";
 import FreeDetails from "./FreeDetails";
+import { NoticeDetalis } from "./NoticeDetalis";
 
 export const MainContext = createContext();
 const Container = styled.div``;
@@ -42,7 +43,7 @@ export function Main() {
                   <Route path="page" element={<Mypage />} />
                   <Route path="/writing/:category" element={<Writing />} />
                   <Route path="/update/:id" element={<UpdateDetalis />} />
-                  <Route path="/notice/:id" element={<NotificationDetalis />} />
+                  <Route path="/notice/:id" element={<NoticeDetalis />} />
                   <Route path="/Free/:id" element={<FreeDetails />} />
                   <Route path="/QA/:id" element={<QandAdetalis0 />} />
                   <Route path="/Attack/:id" element={<AttackDetails />} />

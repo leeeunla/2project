@@ -1,7 +1,8 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import AttackComment from "./AttackComment";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
   color: white;
@@ -12,64 +13,93 @@ const Container = styled.div`
   padding: 1rem;
 `;
 export function AttackDetails() {
-  const data = [
-    {},
-    {
-      heading: "1",
-      title: "1층 톱날 공략법",
-      text: "타이밍만 잘 보고 가시면 됩니다.",
-      writer: "jends",
-      createDate: "2024-02-05",
-    },
-    {
-      heading: "2",
-      title: "모든 코인 얻는법",
-      text: "숨겨진 코인은 없으니 차분히 먹으시면 됩니다.",
-      writer: "gksjd",
-      createDate: "2024-02-06",
-    },
-    {
-      heading: "3",
-      title: "톱날에 죽지 않고 살 수 있는법",
-      text: "끝에 살짝만 밣고 가세요",
-      writer: "jane",
-      createDate: "2024-02-07",
-    },
-    {
-      heading: "4",
-      title: "원 위에서 한번에 블럭으로 점프하는 법",
-      text: "버그일 수 있으니 너무 사용하시진 마시고 최대한 끝부분에서 뛰시면 됩니다.",
-      writer: "dnks",
-      createDate: "2024-02-08",
-    },
-    {
-      heading: "5",
-      title: "2층 완전 공략",
-      text: "코인 잘 먹고 점프를 잘 하시면 쉽게 깰 수 있습니다",
-      writer: "tanes",
-      createDate: "2024-02-09",
-    },
-    {
-      heading: "6",
-      title: "극악의 난이도 3층 공략법(ㅅㅍ 주의)",
-      text: " 칼날도 많고 공도 많아서 힘들지만 진짜 길은 왼쪽입니다.",
-      writer: "toms",
-      createDate: "2024-02-10",
-    },
-  ];
+  const [data, setData] = useState();
+  const [comments, setComments] = useState();
+  const [inputComment, setInputComment] = useState();
   const { id } = useParams();
-  const selectedIndex = parseInt(id); // index 값을 숫자로 변환
-  const selectedAttack = data[selectedIndex];
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    apiGetAttById(id);
+  }, []);
+  async function apiGetAttById(id) {
+    const response = await fetch(`http://localhost:8080/api/board-any/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => response.json());
+
+    console.log(response);
+    if (response.resultCode === "SUCCESS") {
+      setData(response.data);
+      apiGetComments(id);
+    } else {
+      if (response.resultCode === "ERROR") {
+        setData(response.data);
+        apiGetComments(id);
+      }
+    }
+  }
+  async function apiGetComments(boardId) {
+    const response = await fetch(
+      `http://localhost:8080/api/comment/${boardId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((response) => response.json());
+
+    console.log(response);
+    if (response.resultCode === "SUCCESS") {
+      setComments(response.data);
+    } else {
+      if (response.resultCode === "ERROR") {
+        setComments(response.data);
+      }
+    }
+  }
+  async function apiWriteComment(boardId) {
+    const user = JSON.parse(sessionStorage.getItem("loginState"));
+    if (!user) {
+      alert("로그인 하세요");
+      navigate("/login");
+    } else {
+      const comment = {
+        author: user.username,
+        text: inputComment,
+        boardId: boardId,
+      };
+      const response = await fetch(`http://localhost:8080/api/comment`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(comment),
+      }).then((response) => response.json());
+
+      console.log(response);
+      if (response.resultCode === "SUCCESS") {
+        setComments((prev) => [...prev, response.data]);
+      } else {
+        if (response.resultCode === "ERROR") {
+          setComments((prev) => [...prev, response.data]);
+        }
+      }
+    }
+  }
   return (
     <>
       <Container>
         <h2 style={{ borderBottom: "1px solid white" }}>공략 게시판</h2>
-        {selectedAttack ? (
+        {data ? (
           <>
-            {selectedAttack.title && <h3>{selectedAttack.title}</h3>}
-            {selectedAttack.text && <p>{selectedAttack.text}</p>}
-            <p>작성자: {selectedAttack.writer}</p>
-            <p>작성일: {selectedAttack.createDate}</p>
+            <h3>{data.title}</h3>
+            <p>{data.text}</p>
+            <p>작성자: {data.author.username}</p>
+            <p>작성일: {data.createAt}</p>
           </>
         ) : (
           <p>선택한 공략 정보가 없습니다.</p>
@@ -94,12 +124,17 @@ export function AttackDetails() {
               height: "20px",
               padding: "5px",
             }}
+            value={inputComment}
+            onChange={(e) => setInputComment(e.target.value)}
           ></input>
-          <button style={{ padding: "5px", width: "50px" }} onClick={() => {}}>
+          <button
+            style={{ padding: "5px", width: "50px" }}
+            onClick={() => apiWriteComment(data.id)}
+          >
             등록
           </button>
         </div>
-        <AttackComment index={selectedIndex} />
+        {comments ? <AttackComment comments={comments} /> : null}
       </Container>
     </>
   );
