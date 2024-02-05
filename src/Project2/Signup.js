@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -19,7 +19,6 @@ const BackgroundImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -27,18 +26,24 @@ const BackgroundImage = styled.div`
 `;
 
 export function Signup() {
-  const [username, setUsername] = useState(""); // 닉네임
+  const [nickName, setNickName] = useState(""); // 닉네임
   const [name, setName] = useState(""); // 성함
   const [password, setPassword] = useState("");
-  const [id, setID] = useState("");
+  const [loginId, setLoginId] = useState("");
   const [passwordcheck, setPasswordCheck] = useState("");
   // 비밀번호 확인
   const [gender, setGender] = useState("");
   const [birthday, setBirthday] = useState("");
   const [email, setEmail] = useState("");
-
-  const [signup, setSignup] = useState();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const loginState = JSON.parse(sessionStorage.getItem("loginState"));
+    if (loginState) {
+      alert("로그아웃하고 회원가입을 진행해주세요");
+      navigate("/");
+    }
+  }, []);
 
   const BirthdayChange = (e) => {
     const value = e.target.value;
@@ -47,6 +52,35 @@ export function Signup() {
       .replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3");
     setBirthday(form);
   };
+
+  async function apiSignup() {
+    const user = {
+      username: loginId,
+      password: password,
+      name: name,
+      nickname: nickName,
+      birthDate: birthday,
+      gender: gender,
+      email: email,
+    };
+
+    const response = await fetch("http://localhost:8080/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then((response) => response.json());
+
+    console.log(response);
+    if (response.resultCode === "SUCCESS") {
+      alert("회원가입이 완료되었습니다. 로그인해주세요.");
+      navigate("/login");
+    } else {
+      // 에러핸들링 코드 추가
+    }
+  }
+
   return (
     <>
       <div style={{ textAlign: "center", marginTop: "100px", color: "EB7BCo" }}>
@@ -80,8 +114,8 @@ export function Signup() {
             <input
               type="text"
               name="id"
-              value={id}
-              onChange={(e) => setID(e.target.value)}
+              value={loginId}
+              onChange={(e) => setLoginId(e.target.value)}
               placeholder="아이디"
               style={{ padding: "10px", margin: "10px" }}
             />
@@ -91,8 +125,8 @@ export function Signup() {
           <label>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={nickName}
+              onChange={(e) => setNickName(e.target.value)}
               name="name"
               placeholder="닉네임"
               style={{ padding: "10px", margin: "10px" }}
@@ -128,15 +162,19 @@ export function Signup() {
             <input
               type="radio"
               name="gender"
-              value="man"
+              value="MAN"
               style={{ padding: "10px", margin: "10px" }}
+              checked={gender === "MAN"}
+              onChange={(e) => setGender(e.target.value)}
             />
             남성
             <input
               type="radio"
               name="gender"
-              value="woman"
+              value="WOMAN"
               style={{ padding: "10px", margin: "10px" }}
+              checked={gender === "WOMAN"}
+              onChange={(e) => setGender(e.target.value)}
             />
             여성
           </label>
@@ -150,13 +188,6 @@ export function Signup() {
               style={{ padding: "10px", margin: "10px" }}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />
-            @
-            <input
-              type="text"
-              name="email"
-              placeholder="입력"
-              style={{ padding: "10px", margin: "10px" }}
             />
           </label>
         </div>
@@ -184,6 +215,7 @@ export function Signup() {
               borderWidth: "1px",
               color: "white",
             }}
+            onClick={apiSignup}
           >
             회원가입
           </button>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 const Container = styled.div`
@@ -9,76 +10,53 @@ const Container = styled.div`
   padding: 1rem;
 `;
 export function Free() {
-  const data = [
-    {
-      id: 0,
-      heading: "말머리",
-      title: "제목",
-      writer: "작성자",
-      cTime: "작성일",
-    },
-    {
-      id: 1,
-      heading: "1",
-      title: "오늘 점심 뭐먹지?",
-      writer: "dnmks68",
-      cTime: "2024-02-05",
-    },
-    {
-      id: 2,
-      heading: "2",
-      title: "내가 재미있는 얘기해줄까?",
-      writer: "hom",
-      cTime: "2024-02-06",
-    },
-    {
-      id: 3,
-      heading: "3",
-      title: "아몬드가 죽으면?",
-      writer: "foge",
-      cTime: "2024-02-07",
-    },
-    {
-      id: 4,
-      heading: "4",
-      title: "운영진들은 난이도 하향해라",
-      writer: "tom",
-      cTime: "2024-02-08",
-    },
-    {
-      id: 5,
-      heading: "5",
-      title: "이야 패치한 거 봄?",
-      writer: "longs",
-      cTime: "2024-02-09",
-    },
-  ];
+  const [data, setData] = useState();
+  useEffect(() => {
+    apiGetFree();
+  }, []);
+  async function apiGetFree() {
+    const response = await fetch(`http://localhost:8080/api/board/free`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => response.json());
+
+    console.log(response);
+    if (response.resultCode === "SUCCESS") {
+      setData(response.data);
+    } else {
+      if (response.resultCode === "ERROR") {
+        setData(response.data);
+      }
+    }
+  }
   return (
     <>
       <Container>
         <h2 style={{ borderBottom: "1px solid white" }}>자유 게시판</h2>
         <table>
           <tbody style={{ textAlign: "center" }}>
-            {data.map((free, index) => (
+            {data?.map((free, index) => (
               <tr key={index}>
-                <td>{free.heading}</td>
+                <td>{index + 1}</td>
                 <td>
                   <Link
                     style={{ textDecoration: "none", color: "white" }}
-                    to={`/free/${index}`}
+                    to={`/free/${free.id}`}
                   >
                     {free.title}
                   </Link>
                 </td>
-                <td>{free.writer}</td>
-                <td>{free.cTime}</td>
+                <td>{free.author.username}</td>
+                <td>{free.createAt}</td>
               </tr>
             ))}
           </tbody>
         </table>
 
         <div style={{ textAlign: "end" }}>
-          <Link to="/witing">
+          <Link to="/writing">
             <button>글쓰기</button>
           </Link>
         </div>

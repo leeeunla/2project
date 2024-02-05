@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import Notification from "./Notification";
 import Update from "./Update";
-import { Game } from "./Game";
-import { Object } from "./Object";
-import Map from "./Map";
+import { GameObject, Object } from "./GameObject";
 import { Free } from "./Free";
 import Attack from "./Attack";
 import QandA from "./QandA";
+import { Gameinfo } from "./Gameinfo";
+import Notice from "./Notice";
+import GameMapinfo from "./GameMapinfo";
 
 export function Board() {
   const { id } = useParams();
@@ -14,15 +14,15 @@ export function Board() {
   return (
     <>
       {id == 0 ? (
-        <Notification />
+        <Notice />
       ) : id == 1 ? (
         <Update />
       ) : id == 2 ? (
-        <Game />
+        <Gameinfo />
       ) : id == 3 ? (
-        <Object />
+        <GameObject />
       ) : id == 4 ? (
-        <Map />
+        <GameMapinfo />
       ) : id == 5 ? (
         <QandA />
       ) : id == 6 ? (

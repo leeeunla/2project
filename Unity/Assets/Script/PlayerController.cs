@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     float jumpInterval = 0.5f;
     float timeSinceLastJump = 0f;
 
+    bool isMoving = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +50,10 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-
-        axisH = Input.GetAxisRaw("Horizontal");
+        if (isMoving == false)
+        {
+            axisH = Input.GetAxisRaw("Horizontal");
+        }
         if (axisH > 0.0f)
         {
             transform.localScale = new Vector3(1, 1, transform.localScale.z);
@@ -178,5 +182,17 @@ public class PlayerController : MonoBehaviour
         // 속도를 0으로 하여 강제 정지
         rbody.velocity = new Vector2(0, 0);
     }
+    public void SetAxis(float h, float v)
 
+    {
+        axisH = h;
+        if (axisH == 0)
+        {
+            isMoving = false;
+        }
+        else
+        {
+            isMoving = true;
+        }
+    }
 }

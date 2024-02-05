@@ -23,6 +23,8 @@ public class GameUIManager : MonoBehaviour
     public static int totalScore;       // 점수 총합
     public int stageScore = 0;          // 스테이지 점수
 
+    public GameObject inputUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,7 @@ public class GameUIManager : MonoBehaviour
     {
         if (PlayerController.gameState == "gameclear")
         {
+            inputUI.SetActive(false);
             // 게임 클리어
             mainImage.SetActive(true); // 이미지 표시
             panel.SetActive(true); // 버튼(패널)을 표시
@@ -69,6 +72,7 @@ public class GameUIManager : MonoBehaviour
                 // 정수에 할당하여 소숫점 버림
                 /*           int time = (int)timeCnt.displayTime;
                            totalScore += time * 10;        // 남은 시간을 점수에 더한다.*/
+    
             }
 
             // +++ 점수 추가 +++
@@ -76,8 +80,13 @@ public class GameUIManager : MonoBehaviour
             stageScore = 0;
             UpdateScore();// 점수를 UI에 반영
         }
+
+    
+
+
         else if (PlayerController.gameState == "gameover")
         {
+            inputUI.SetActive(false);
             // 게임 오버
             mainImage.SetActive(true);      // 이미지 표시
             panel.SetActive(true);          // 버튼(패널)을 표시
@@ -138,5 +147,12 @@ public class GameUIManager : MonoBehaviour
     {
         int score = stageScore + totalScore;
         scoreText.GetComponent<Text>().text = score.ToString();
+    }
+
+    public void Jump()
+        {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PlayerController playerCnt = player.GetComponent<PlayerController>();
+        playerCnt.Jump();
     }
 }

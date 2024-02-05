@@ -16,14 +16,14 @@ export function GameDetails() {
     {
       heading: "1",
       title: "조작법",
-      text: "",
+      text: "W,A,S,D이나 화살표로 움직일 수 있습니다.",
       writer: "운영자",
       createDate: "2024-02-05",
     },
     {
       heading: "2",
       title: "게임실행",
-      text: "",
+      text: "로그인 후 홈페이지 상단 게임 스타트 버튼으로 시작할 수 있습니다.",
       writer: "운영자",
       createDate: "2024-02-06",
     },
@@ -38,8 +38,8 @@ export function GameDetails() {
 
         {selectedGame ? (
           <>
-            {selectedGame.title && <h3>제목: {selectedGame.title}</h3>}
-            {selectedGame.text && <p>내용: {selectedGame.text}</p>}
+            {selectedGame.title && <h3>{selectedGame.title}</h3>}
+            {selectedGame.text && <p>{selectedGame.text}</p>}
             <p>작성자: {selectedGame.writer}</p>
             <p>작성일: {selectedGame.createDate}</p>
           </>

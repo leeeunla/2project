@@ -86,7 +86,7 @@ const Attack = () => {
         </table>
 
         <div style={{ textAlign: "end" }}>
-          <Link to="/witing">
+          <Link to="/writing">
             <button>글쓰기</button>
           </Link>
         </div>

@@ -60,7 +60,7 @@ export function NavText() {
               </button>
             </Link>
 
-            {isLoggedIn ? (
+            <Link to="/login">
               <button
                 style={{
                   backgroundColor: "transparent",
@@ -68,25 +68,11 @@ export function NavText() {
                   marginRight: "15px",
                   cursor: "pointer",
                 }}
-                onClick={handleLogout}
+                onClick={handleLogin}
               >
-                로그아웃
+                로그인
               </button>
-            ) : (
-              <Link to="/login">
-                <button
-                  style={{
-                    backgroundColor: "transparent",
-                    border: "none",
-                    marginRight: "15px",
-                    cursor: "pointer",
-                  }}
-                  onClick={handleLogin}
-                >
-                  로그인
-                </button>
-              </Link>
-            )}
+            </Link>
             <Link to="/admin/login">
               <button
                 style={{

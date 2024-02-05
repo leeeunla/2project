@@ -14,8 +14,6 @@ import { Write } from "./Write";
 import Mypage from "./Mypage";
 import { Home } from "./Home";
 
-// import { Chart1 } from "./Chart1";
-import { Chart2 } from "./Chart2";
 import Administratorpage from "./Administratorpage";
 import { AdminWriting } from "./AdminWriting";
 
@@ -24,17 +22,13 @@ import { NotificationDetalis } from "./NotificationDetalis";
 import { QandAdetalis0 } from "./QandADetalis0";
 import { AttackDetails } from "./AttackDetails";
 import { GameDetails } from "./GameDetails";
-import { ObjectDetalis } from "./ObjectDetails";
+import { ObjectDetails } from "./ObjectDetails";
+import MapDetails from "./MapDetails";
 import FreeDetails from "./FreeDetails";
-import FreeComment from "./FreeComment";
 
-// import { QueryClient, useQuery } from "react-query";
-
-// const client = new QueryClient();
 export const MainContext = createContext();
 const Container = styled.div``;
 export function Main() {
-  // const { data, isLoading } = useQuery("main");
   return (
     <>
       <MainContext.Provider>
@@ -42,19 +36,19 @@ export function Main() {
           <Container>
             <div>
               <Routes>
-                <Route path="" element={<NavText />}>
+                <Route path="/" element={<NavText />}>
                   <Route path="/" element={<Home />} />
                   <Route path="board/:id" element={<Board />} />
                   <Route path="page" element={<Mypage />} />
-                  <Route path="witing" element={<Writing />} />
+                  <Route path="/writing/:category" element={<Writing />} />
                   <Route path="/update/:id" element={<UpdateDetalis />} />
                   <Route path="/notice/:id" element={<NotificationDetalis />} />
                   <Route path="/Free/:id" element={<FreeDetails />} />
-
                   <Route path="/QA/:id" element={<QandAdetalis0 />} />
                   <Route path="/Attack/:id" element={<AttackDetails />} />
                   <Route path="/Game/:id" element={<GameDetails />} />
-                  <Route path="/Object/:id" element={<ObjectDetalis />} />
+                  <Route path="/Object/:id" element={<ObjectDetails />} />
+                  <Route path="/Map/:id" element={<MapDetails />} />
                 </Route>
 
                 <Route path="login" element={<Login />}></Route>
@@ -64,7 +58,6 @@ export function Main() {
                 <Route path="find" element={<Findid />}></Route>
                 <Route path="quiry" element={<Inquiry />}></Route>
                 <Route path="write" element={<Write />}></Route>
-                <Route path="chart" element={<Chart2 />}></Route>
                 <Route
                   path="admin/dashboard"
                   element={<Administratorpage />}
