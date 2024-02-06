@@ -9,6 +9,9 @@ const Container = styled.div`
   border: 1px solid gray;
   margin: 1rem;
   padding: 1rem;
+  display: grid;
+  grid-template-columns: 10% 35% 35% 20%;
+  text-align: center;
 `;
 const Walkthrough = () => {
   const [data, setData] = useState();
@@ -39,34 +42,35 @@ const Walkthrough = () => {
   }
   return (
     <>
+      <h2 style={{ borderBottom: "1px solid white", color: "white" }}>
+        공략 게시판
+      </h2>
       <Container>
-        <h2 style={{ borderBottom: "1px solid white" }}>공략 게시판</h2>
-        <table>
-          <tbody style={{ textAlign: "center" }}>
-            {data?.map((Walk, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to={`/walkthrough/${Walk.id}`}
-                  >
-                    {Walk.title}
-                  </Link>
-                </td>
-                <td>{Walk.author.username}</td>
-                <td>{Walk.createAt}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div style={{ textAlign: "end" }}>
-          <Link to="/writing/walkthrough">
-            <button>글쓰기</button>
-          </Link>
-        </div>
+        <p>머릿말</p>
+        <p>제목</p>
+        <p>작성자</p>
+        <p>작성일</p>
+        {data?.map((Walk, index) => (
+          <>
+            <p>{index + 1}</p>
+            <p>
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to={`/walkthrough/${Walk.id}`}
+              >
+                {Walk.title}
+              </Link>
+            </p>
+            <p>{Walk.author.username}</p>
+            <p>{Walk.createAt.substr(0, 10)}</p>
+          </>
+        ))}
       </Container>
+      <div style={{ textAlign: "end" }}>
+        <Link to="/writing/walkthrough">
+          <button>글쓰기</button>
+        </Link>
+      </div>
     </>
   );
 };

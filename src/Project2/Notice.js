@@ -9,6 +9,9 @@ const Contanier = styled.div`
   border: 1px solid gray;
   margin: 1rem;
   padding: 1rem;
+  display: grid;
+  grid-template-columns: 10% 35% 35% 20%;
+  text-align: center;
 `;
 
 const Notice = () => {
@@ -41,28 +44,29 @@ const Notice = () => {
 
   return (
     <>
+      <h2 style={{ borderBottom: "1px solid white", color: "white" }}>
+        공지사항
+      </h2>
       <Contanier>
-        <h2 style={{ borderBottom: "1px solid white" }}>공지사항</h2>
-        <table>
-          <tbody style={{ textAlign: "center" }}>
-            {data?.map((notice, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-
-                <td>
-                  <Link
-                    style={{ color: "white", textDecoration: "none" }}
-                    to={`/notice/${notice.id}`}
-                  >
-                    {notice.title}
-                  </Link>
-                </td>
-                <td>{notice.author.username}</td>
-                <td>{notice.createAt}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <p>머릿말</p>
+        <p>제목</p>
+        <p>작성자</p>
+        <p>작성일</p>
+        {data?.map((notice, index) => (
+          <>
+            <p>{index + 1}</p>
+            <p>
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to={`/notice/${notice.id}`}
+              >
+                {notice.title}
+              </Link>
+            </p>
+            <p>{notice.author.username}</p>
+            <p>{notice.createAt.substr(0, 10)}</p>
+          </>
+        ))}
       </Contanier>
     </>
   );

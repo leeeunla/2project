@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Header } from "./Header";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Footer } from "./Footer";
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Container = styled.div``;
 const Div = styled.div`
@@ -28,13 +28,16 @@ const BG = styled.div`
 `;
 
 export function NavText() {
-  const { loginState, setLoginState } = useState("");
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.setItem("loginState", JSON.stringify({ id: null }));
-    setLoginState({ id: null });
-    navigate("/");
+  const GameStart = () => {
+    const loginState = JSON.parse(sessionStorage.getItem("loginState"));
+    if (!loginState) {
+      alert("로그인 하세요");
+      navigate("/login");
+    } else {
+      alert("로그인 확인되었습니다");
+      navigate("/gamestart");
+    }
   };
 
   return (
@@ -84,7 +87,9 @@ export function NavText() {
                 관리자 로그인
               </button>
             </Link>
+
             <button
+              onClick={GameStart}
               style={{
                 padding: "20px",
                 backgroundImage: "linear-gradient(to right, #6495Ed, #4682B4)",

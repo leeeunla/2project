@@ -13,7 +13,7 @@ import { Inquiry } from "./Inquiry";
 import { Write } from "./Write";
 import Mypage from "./Mypage";
 import { Home } from "./Home";
-
+import { AdventureOfLink } from "./AdventureOfLink";
 import Administratorpage from "./Administratorpage";
 import { AdminWriting } from "./AdminWriting";
 
@@ -40,6 +40,7 @@ export function Main() {
               <Routes>
                 <Route path="/" element={<NavText />}>
                   <Route path="/" element={<Home />} />
+                  <Route path="/gameStart" element={<AdventureOfLink />} />
                   <Route path="board/:id" element={<Board />} />
                   <Route path="page" element={<Mypage />} />
                   <Route path="/writing/:category" element={<Writing />} />

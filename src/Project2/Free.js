@@ -4,10 +4,12 @@ import styled from "styled-components";
 const Container = styled.div`
   color: white;
   display: flex;
-  flex-direction: column;
   border: 1px solid gray;
   margin: 1rem;
   padding: 1rem;
+  display: grid;
+  grid-template-columns: 10% 35% 35% 20%;
+  text-align: center;
 `;
 export function Free() {
   const [data, setData] = useState();
@@ -34,34 +36,35 @@ export function Free() {
   }
   return (
     <>
+      <h2 style={{ borderBottom: "1px solid white", color: "white" }}>
+        자유 게시판
+      </h2>
       <Container>
-        <h2 style={{ borderBottom: "1px solid white" }}>자유 게시판</h2>
-        <table>
-          <tbody style={{ textAlign: "center" }}>
-            {data?.map((free, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to={`/free/${free.id}`}
-                  >
-                    {free.title}
-                  </Link>
-                </td>
-                <td>{free.author.username}</td>
-                <td>{free.createAt.substr(0, 10)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div style={{ textAlign: "end" }}>
-          <Link to="/writing/free">
-            <button>글쓰기</button>
-          </Link>
-        </div>
+        <p>머릿말</p>
+        <p>제목</p>
+        <p>작성자</p>
+        <p>작성일</p>
+        {data?.map((free, index) => (
+          <>
+            <p>{index + 1}</p>
+            <p>
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to={`/free/${free.id}`}
+              >
+                {free.title}
+              </Link>
+            </p>
+            <p>{free.author.username}</p>
+            <p>{free.createAt.substr(0, 10)}</p>
+          </>
+        ))}
       </Container>
+      <div style={{ textAlign: "end" }}>
+        <Link to="/writing/free">
+          <button>글쓰기</button>
+        </Link>
+      </div>
     </>
   );
 }

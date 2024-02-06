@@ -9,6 +9,9 @@ const Container = styled.div`
   border: 1px solid gray;
   margin: 1rem;
   padding: 1rem;
+  display: grid;
+  grid-template-columns: 10% 35% 35% 20%;
+  text-align: center;
 `;
 
 const Update = () => {
@@ -37,27 +40,29 @@ const Update = () => {
 
   return (
     <>
+      <h2 style={{ borderBottom: "1px solid white", color: "white" }}>
+        업데이트
+      </h2>
       <Container>
-        <h2 style={{ borderBottom: "1px solid white" }}>업데이트</h2>
-        <table>
-          <tbody style={{ textAlign: "center" }}>
-            {data?.map((update, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>
-                  <Link
-                    style={{ color: "white", textDecoration: "none" }}
-                    to={`/update/${update.id}`}
-                  >
-                    {update.title}
-                  </Link>
-                </td>
-                <td>{update.author.username}</td>
-                <td>{update.createAt}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <p>머릿말</p>
+        <p>제목</p>
+        <p>작성자</p>
+        <p>작성일</p>
+        {data?.map((update, index) => (
+          <>
+            <p>{index + 1}</p>
+            <p>
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to={`/update/${update.id}`}
+              >
+                {update.title}
+              </Link>
+            </p>
+            <p>{update.author.username}</p>
+            <p>{update.createAt.substr(0, 10)}</p>
+          </>
+        ))}
       </Container>
     </>
   );
