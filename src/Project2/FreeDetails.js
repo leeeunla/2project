@@ -14,8 +14,9 @@ const Container = styled.div`
   padding: 1rem;
 `;
 const FreeDetails = () => {
-  const [data, setData] = useState();
-  const [comment, setComments] = useState();
+  const [data, setData] = useState("");
+
+  const [comments, setComments] = useState();
   const [inputComment, setInputComment] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -37,7 +38,10 @@ const FreeDetails = () => {
       setData(response.data);
       apiGetComments(id);
     } else {
-      //에러 코드 작성
+      if (response.resultCode === "ERROR") {
+        setData(response.data);
+        apiGetComments(id);
+      }
     }
   }
   async function apiGetComments(boardId) {
@@ -55,7 +59,9 @@ const FreeDetails = () => {
     if (response.resultCode === "SUCCESS") {
       setComments(response.data);
     } else {
-      //에러 코드 작성
+      if (response.resultCode === "ERROR") {
+        setComments(response.data);
+      }
     }
   }
   async function apiWriteComment(boardId) {
@@ -67,8 +73,9 @@ const FreeDetails = () => {
       const comment = {
         author: user.username,
         text: inputComment,
-        author: boardId,
+        boardId: boardId,
       };
+
       const response = await fetch(`http://localhost:8080/api/comment`, {
         method: "POST",
         headers: {
@@ -78,9 +85,11 @@ const FreeDetails = () => {
 
       console.log(response);
       if (response.resultCode === "SUCCESS") {
-        setComments((prev) => [...prev, response.data]);
+        comments((prev) => [...prev, response.data]);
       } else {
-        //에러 코드 추가
+        if (response.resultCode === "ERROR") {
+          comments((prev) => [...prev, response.data]);
+        }
       }
     }
   }
@@ -94,7 +103,7 @@ const FreeDetails = () => {
             <h3>{data.title}</h3>
             <p>{data.text}</p>
             <p>작성자: {data.author.username}</p>
-            <p>작성일: {data.createAt}</p>
+            <p>작성일: {data.createAt.substr(0, 10)}</p>
           </>
         ) : (
           <p>선택한 자유 정보가 없습니다.</p>
@@ -119,10 +128,17 @@ const FreeDetails = () => {
               height: "20px",
               padding: "5px",
             }}
+            value={inputComment}
+            onChange={(e) => setInputComment(e.target.value)}
           ></input>
-          <button style={{ padding: "5px", width: "50px" }}>등록</button>
+          <button
+            style={{ padding: "5px", width: "50px" }}
+            onClick={() => apiWriteComment(data.id)}
+          >
+            등록
+          </button>
         </div>
-        <FreeComment />
+        {comments ? <FreeComment comments={comments} /> : null}
       </Container>
     </>
   );

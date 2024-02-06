@@ -2,11 +2,11 @@ import { useParams } from "react-router-dom";
 import Update from "./Update";
 import { GameObject, Object } from "./GameObject";
 import { Free } from "./Free";
-import Attack from "./Attack";
 import QandA from "./QandA";
 import { Gameinfo } from "./Gameinfo";
 import Notice from "./Notice";
 import GameMapinfo from "./GameMapinfo";
+import Walkthrough from "./Walkthrough";
 
 export function Board() {
   const { id } = useParams();
@@ -26,7 +26,7 @@ export function Board() {
       ) : id == 5 ? (
         <QandA />
       ) : id == 6 ? (
-        <Attack />
+        <Walkthrough />
       ) : id == 7 ? (
         <Free />
       ) : null}

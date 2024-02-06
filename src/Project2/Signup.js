@@ -77,7 +77,10 @@ export function Signup() {
       alert("회원가입이 완료되었습니다. 로그인해주세요.");
       navigate("/login");
     } else {
-      // 에러핸들링 코드 추가
+      if (response.resultCode === "ERROR") {
+        alert("회원가입이 취소되었습니다. 다시 회원가입 해주세요");
+        navigate("/signup");
+      }
     }
   }
 

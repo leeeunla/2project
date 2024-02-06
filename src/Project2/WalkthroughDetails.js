@@ -1,8 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import AttackComment from "./AttackComment";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useEffect, useState } from "react";
+import WalkthroughComment from "./WalkthorughComment";
 
 const Container = styled.div`
   color: white;
@@ -12,17 +12,17 @@ const Container = styled.div`
   margin: 1rem;
   padding: 1rem;
 `;
-export function AttackDetails() {
+export function WalkthroughDetails() {
   const [data, setData] = useState();
-  const [comments, setComments] = useState();
-  const [inputComment, setInputComment] = useState();
+  const [comments, setComments] = useState([]);
+  const [inputComment, setInputComment] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    apiGetAttById(id);
+    apiGetWalkById(id);
   }, []);
-  async function apiGetAttById(id) {
+  async function apiGetWalkById(id) {
     const response = await fetch(`http://localhost:8080/api/board-any/${id}`, {
       method: "GET",
       headers: {
@@ -72,7 +72,7 @@ export function AttackDetails() {
         text: inputComment,
         boardId: boardId,
       };
-      const response = await fetch(`http://localhost:8080/api/comment`, {
+      const response = await fetch(`http://localhost:8080/api/Comment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -134,7 +134,7 @@ export function AttackDetails() {
             등록
           </button>
         </div>
-        {comments ? <AttackComment comments={comments} /> : null}
+        {comments ? <WalkthroughComment comments={comments} /> : null}
       </Container>
     </>
   );

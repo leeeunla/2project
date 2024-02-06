@@ -28,15 +28,8 @@ const BG = styled.div`
 `;
 
 export function NavText() {
-  const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [isLogin, setisLogin] = useState(false);
 
-  const handleLogin = () => {
-    setisLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setisLoggedIn(false);
-  };
   return (
     <>
       <Container>
@@ -59,20 +52,34 @@ export function NavText() {
                 회원가입
               </button>
             </Link>
+            {isLogin.id ? (
+              <Link to="/logout">
+                <button
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "none",
+                    marginRight: "15px",
+                    cursor: "pointer",
+                  }}
+                >
+                  로그아웃
+                </button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <button
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "none",
+                    marginRight: "15px",
+                    cursor: "pointer",
+                  }}
+                >
+                  로그인
+                </button>
+              </Link>
+            )}
 
-            <Link to="/login">
-              <button
-                style={{
-                  backgroundColor: "transparent",
-                  border: "none",
-                  marginRight: "15px",
-                  cursor: "pointer",
-                }}
-                onClick={handleLogin}
-              >
-                로그인
-              </button>
-            </Link>
             <Link to="/admin/login">
               <button
                 style={{

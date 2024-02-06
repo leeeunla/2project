@@ -37,7 +37,10 @@ export function QandAdetalis0() {
       setData(response.data);
       apiGetComments(id);
     } else {
-      // 에러핸들링 코드 추가
+      if (response.resultCode === "ERROR") {
+        setData(response.data);
+        apiGetComments(id);
+      }
     }
   }
 
@@ -56,7 +59,9 @@ export function QandAdetalis0() {
     if (response.resultCode === "SUCCESS") {
       setComments(response.data);
     } else {
-      // 에러핸들링 코드 추가
+      if (response.resultCode === "ERROR") {
+        setComments(response.data);
+      }
     }
   }
 
@@ -83,7 +88,9 @@ export function QandAdetalis0() {
       if (response.resultCode === "SUCCESS") {
         setComments((prev) => [...prev, response.data]);
       } else {
-        // 에러핸들링 코드 추가
+        if (response.resultCode === "ERROR") {
+          setComments((prev) => [...prev, response.data]);
+        }
       }
     }
   }

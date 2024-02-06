@@ -6,17 +6,18 @@ const Container = styled.div`
   border: 1px solid white;
 `;
 
-const FreeComment = ({ comment }) => {
+const FreeComment = ({ comments }) => {
+  console.log(comments);
   return (
     <Container>
-      {comment.map((comment, commentIndex) => (
+      {comments.map((comment, commentIndex) => (
         <div
           style={{ margin: "15px", borderBottom: "1px solid white" }}
           key={commentIndex}
         >
           <div style={{ display: "flex", gap: "20px" }}>
-            <p>{comment.writer}</p>
-            <p>{comment.createDate}</p>
+            <p>{comment.author.username}</p>
+            <p>{comment.createAt}</p>
           </div>
           <p>{comment.text}</p>
         </div>

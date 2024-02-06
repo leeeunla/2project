@@ -55,84 +55,90 @@ export function Login() {
       sessionStorage.setItem("loginState", JSON.stringify(loginState));
       navigate("/");
     } else {
-      // 에러핸들링 코드 추가
+      if (response.resultCode === "ERROR") {
+        const loginState = {
+          username: response.data.username,
+          authorities: response.data.authoritySet,
+          token: response.data.token,
+        };
+        sessionStorage.setItem("loginState", JSON.stringify(loginState));
+        navigate("/login");
+      }
     }
   }
   return (
     <>
       <Contanier>
-        <form>
-          <Link
-            to="/"
+        <Link
+          to="/"
+          style={{
+            textDecoration: "none",
+            color: "#6495Ed",
+          }}
+        >
+          <h1>링크의 모험</h1>
+        </Link>
+        <div>
+          <p>
+            <input
+              type="text"
+              placeholder="아이디"
+              style={{
+                padding: "12px",
+                width: "220px",
+              }}
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+            />
+          </p>
+          <p>
+            <input
+              type="password"
+              placeholder="비밀번호"
+              style={{ padding: "12px", width: "220px" }}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </p>
+          <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
+          <button
             style={{
-              textDecoration: "none",
-              color: "#6495Ed",
+              width: "250px",
+              height: "35px",
+              borderRadius: "5px",
+              backgroundColor: "#6495Ed",
+              cursor: "pointer",
+              borderWidth: "1px",
+              color: "white",
+            }}
+            onClick={apiLogin}
+          >
+            로그인
+          </button>
+          <div
+            style={{
+              listStyle: "none",
+              display: "flex",
+              justifyContent: "center",
+              gap: "5px",
+              cursor: "pointer",
             }}
           >
-            <h1>링크의 모험</h1>
-          </Link>
-          <div>
-            <p>
-              <input
-                type="text"
-                placeholder="아이디"
-                style={{
-                  padding: "12px",
-                  width: "220px",
-                }}
-                value={id}
-                onChange={(e) => setId(e.target.value)}
-              />
-            </p>
-            <p>
-              <input
-                type="password"
-                placeholder="비밀번호"
-                style={{ padding: "12px", width: "220px" }}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </p>
-            <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
-            <button
-              style={{
-                width: "250px",
-                height: "35px",
-                borderRadius: "5px",
-                backgroundColor: "#6495Ed",
-                cursor: "pointer",
-                borderWidth: "1px",
-                color: "white",
-              }}
-              onClick={apiLogin}
+            <Link
+              to="/signup"
+              style={{ textDecoration: "none", color: "black" }}
             >
-              로그인
-            </button>
-            <div
-              style={{
-                listStyle: "none",
-                display: "flex",
-                justifyContent: "center",
-                gap: "5px",
-                cursor: "pointer",
-              }}
-            >
-              <Link
-                to="/signup"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <p>회원가입 &#124;</p>
-              </Link>
+              <p>회원가입 &#124;</p>
+            </Link>
 
-              <div
-                onClick={openpopup}
-                style={{ textDecoration: "none", color: "" }}
-              >
-                <p>아이디찾기</p>
-              </div>
+            <div
+              onClick={openpopup}
+              style={{ textDecoration: "none", color: "" }}
+            >
+              <p>아이디찾기</p>
             </div>
           </div>
-        </form>
+        </div>
       </Contanier>
     </>
   );

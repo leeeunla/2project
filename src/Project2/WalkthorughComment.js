@@ -6,7 +6,7 @@ const Container = styled.div`
   border: 1px solid white;
 `;
 
-const AttackComment = ({ comments }) => {
+const WalkthroughComment = ({ comments }) => {
   return (
     <>
       <Container>
@@ -26,4 +26,4 @@ const AttackComment = ({ comments }) => {
     </>
   );
 };
-export default AttackComment;
+export default WalkthroughComment;

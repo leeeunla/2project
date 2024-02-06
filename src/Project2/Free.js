@@ -11,6 +11,7 @@ const Container = styled.div`
 `;
 export function Free() {
   const [data, setData] = useState();
+
   useEffect(() => {
     apiGetFree();
   }, []);
@@ -49,14 +50,14 @@ export function Free() {
                   </Link>
                 </td>
                 <td>{free.author.username}</td>
-                <td>{free.createAt}</td>
+                <td>{free.createAt.substr(0, 10)}</td>
               </tr>
             ))}
           </tbody>
         </table>
 
         <div style={{ textAlign: "end" }}>
-          <Link to="/writing">
+          <Link to="/writing/board7">
             <button>글쓰기</button>
           </Link>
         </div>
