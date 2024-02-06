@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 export function WalkthroughDetails() {
   const [data, setData] = useState();
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState();
   const [inputComment, setInputComment] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -36,8 +36,13 @@ export function WalkthroughDetails() {
       apiGetComments(id);
     } else {
       if (response.resultCode === "ERROR") {
-        setData(response.data);
-        apiGetComments(id);
+        setComments([
+          {
+            author: "",
+            text: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+            boardId: "",
+          },
+        ]);
       }
     }
   }
@@ -57,7 +62,13 @@ export function WalkthroughDetails() {
       setComments(response.data);
     } else {
       if (response.resultCode === "ERROR") {
-        setComments(response.data);
+        setComments([
+          {
+            author: "",
+            text: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+            boardId: "",
+          },
+        ]);
       }
     }
   }
@@ -72,7 +83,7 @@ export function WalkthroughDetails() {
         text: inputComment,
         boardId: boardId,
       };
-      const response = await fetch(`http://localhost:8080/api/Comment`, {
+      const response = await fetch(`http://localhost:8080/api/comment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +96,13 @@ export function WalkthroughDetails() {
         setComments((prev) => [...prev, response.data]);
       } else {
         if (response.resultCode === "ERROR") {
-          setComments((prev) => [...prev, response.data]);
+          setComments([
+            {
+              author: "",
+              text: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+              boardId: "",
+            },
+          ]);
         }
       }
     }
@@ -99,7 +116,7 @@ export function WalkthroughDetails() {
             <h3>{data.title}</h3>
             <p>{data.text}</p>
             <p>작성자: {data.author.username}</p>
-            <p>작성일: {data.createAt}</p>
+            <p>작성일: {data.createAt.substr(0, 10)}</p>
           </>
         ) : (
           <p>선택한 공략 정보가 없습니다.</p>

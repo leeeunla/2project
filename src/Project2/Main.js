@@ -26,6 +26,7 @@ import MapDetails from "./MapDetails";
 import FreeDetails from "./FreeDetails";
 import { NoticeDetalis } from "./NoticeDetalis";
 import { WalkthroughDetails } from "./WalkthroughDetails";
+import Logout from "./Logout";
 
 export const MainContext = createContext();
 const Container = styled.div``;
@@ -46,6 +47,7 @@ export function Main() {
                   <Route path="/notice/:id" element={<NoticeDetalis />} />
                   <Route path="/Free/:id" element={<FreeDetails />} />
                   <Route path="/QA/:id" element={<QandAdetalis0 />} />
+                  <Route path="logout" element={<Logout />} />
                   <Route
                     path="/walkthrough/:id"
                     element={<WalkthroughDetails />}

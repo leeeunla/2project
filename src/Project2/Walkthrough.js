@@ -62,7 +62,7 @@ const Walkthrough = () => {
         </table>
 
         <div style={{ textAlign: "end" }}>
-          <Link to="/writing/board6">
+          <Link to="/writing/walkthrough">
             <button>글쓰기</button>
           </Link>
         </div>

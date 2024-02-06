@@ -7,7 +7,7 @@ import { Dashboardinquiry } from "./Dashboardinquiry";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 50px;
   padding: 15px;
 `;
 const Dashboard1 = () => {

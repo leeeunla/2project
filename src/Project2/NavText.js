@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Header } from "./Header";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Footer } from "./Footer";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 const Container = styled.div``;
 const Div = styled.div`
@@ -28,7 +28,14 @@ const BG = styled.div`
 `;
 
 export function NavText() {
-  const [isLogin, setisLogin] = useState(false);
+  const { loginState, setLoginState } = useState("");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.setItem("loginState", JSON.stringify({ id: null }));
+    setLoginState({ id: null });
+    navigate("/");
+  };
 
   return (
     <>
@@ -52,33 +59,18 @@ export function NavText() {
                 회원가입
               </button>
             </Link>
-            {isLogin.id ? (
-              <Link to="/logout">
-                <button
-                  style={{
-                    backgroundColor: "transparent",
-                    border: "none",
-                    marginRight: "15px",
-                    cursor: "pointer",
-                  }}
-                >
-                  로그아웃
-                </button>
-              </Link>
-            ) : (
-              <Link to="/login">
-                <button
-                  style={{
-                    backgroundColor: "transparent",
-                    border: "none",
-                    marginRight: "15px",
-                    cursor: "pointer",
-                  }}
-                >
-                  로그인
-                </button>
-              </Link>
-            )}
+            <Link to="/login">
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  border: "none",
+                  marginRight: "15px",
+                  cursor: "pointer",
+                }}
+              >
+                로그인
+              </button>
+            </Link>
 
             <Link to="/admin/login">
               <button

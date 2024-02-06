@@ -28,9 +28,13 @@ export function Gameinfo() {
     if (response.resultCode === "SUCCESS") {
       setData(response.data);
     } else {
-      if (response.resultCode === "ERROR") {
-        setData(response.data);
-      }
+      setData([
+        {
+          author: "",
+          title: "게시글이 존재하지 않습니다",
+          createAt: "",
+        },
+      ]);
     }
   }
   return (

@@ -57,7 +57,7 @@ export function Free() {
         </table>
 
         <div style={{ textAlign: "end" }}>
-          <Link to="/writing/board7">
+          <Link to="/writing/free">
             <button>글쓰기</button>
           </Link>
         </div>

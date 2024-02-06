@@ -39,8 +39,13 @@ const FreeDetails = () => {
       apiGetComments(id);
     } else {
       if (response.resultCode === "ERROR") {
-        setData(response.data);
-        apiGetComments(id);
+        setComments([
+          {
+            author: "",
+            text: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+            boardId: "",
+          },
+        ]);
       }
     }
   }
@@ -60,7 +65,13 @@ const FreeDetails = () => {
       setComments(response.data);
     } else {
       if (response.resultCode === "ERROR") {
-        setComments(response.data);
+        setComments([
+          {
+            author: "",
+            text: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+            boardId: "",
+          },
+        ]);
       }
     }
   }
@@ -86,10 +97,16 @@ const FreeDetails = () => {
 
       console.log(response);
       if (response.resultCode === "SUCCESS") {
-        comments((prev) => [...prev, response.data]);
+        setComments((prev) => [...prev, response.data]);
       } else {
         if (response.resultCode === "ERROR") {
-          comments((prev) => [...prev, response.data]);
+          setComments([
+            {
+              author: "",
+              text: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+              boardId: "",
+            },
+          ]);
         }
       }
     }

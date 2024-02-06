@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
         // 속도를 0으로 하여 강제 정지
         rbody.velocity = new Vector2(0, 0);
     }
-    public void SetAxis(float h, float v)
+    public void SetAxis(float h)
 
     {
         axisH = h;

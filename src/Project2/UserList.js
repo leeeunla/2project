@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { CiSearch } from "react-icons/ci";
 
 const Container = styled.div`
   display: flex;
@@ -11,6 +12,7 @@ const UserList = () => {
     <>
       <div>
         <input type="text" placeholder="검색어를 입력하세요" />
+        <CiSearch />
       </div>
       <Container>
         <div

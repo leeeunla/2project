@@ -59,7 +59,7 @@ const QandA = () => {
         </table>
 
         <div style={{ textAlign: "end" }}>
-          <Link to="/writing">
+          <Link to="/writing/qna">
             <button>글쓰기</button>
           </Link>
         </div>

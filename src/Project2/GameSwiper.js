@@ -37,26 +37,17 @@ const GameSwiper = () => {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
       >
         <SwiperSlide>
+          <img src="imge/map.png" style={{ width: "900px", height: "400px" }} />
+        </SwiperSlide>
+        <SwiperSlide>
           <img
-            src="https://cdn.pixabay.com/photo/2014/04/05/11/40/chess-316658_1280.jpg"
+            src="imge/map2.png"
             style={{ width: "900px", height: "400px" }}
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="https://i.pinimg.com/736x/eb/3a/72/eb3a7218ef974af7f39d18daf508a167.jpg"
-            style={{ width: "900px", height: "400px" }}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://cdn.pixabay.com/photo/2022/12/04/15/10/game-7634718_1280.jpg"
-            style={{ width: "900px", height: "400px" }}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://cdn.pixabay.com/photo/2015/05/10/21/16/board-761586_1280.jpg"
+            src="imge/map3.png"
             style={{ width: "900px", height: "400px" }}
           />
         </SwiperSlide>
