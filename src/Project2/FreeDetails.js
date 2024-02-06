@@ -81,6 +81,7 @@ const FreeDetails = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify(comment),
       }).then((response) => response.json());
 
       console.log(response);

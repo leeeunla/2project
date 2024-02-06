@@ -17,7 +17,7 @@ const MapDetails = () => {
     {
       heading: "1",
       title: "1층",
-      src: process.env.PUBLIC_URL + "",
+      src: process.env.PUBLIC_URL + "/imge/map.png",
       text: "어느길이 진짜 일까요? 잘못 가면 죽음이 기다리는 그 길은 과연 어디일까요?!",
       writer: "운영자",
       createDate: "2024-02-05",
@@ -25,7 +25,7 @@ const MapDetails = () => {
     {
       heading: "2",
       title: "2층",
-      src: process.env.PUBLIC_URL + "",
+      src: process.env.PUBLIC_URL + "/imge/map2.png",
       text: "난이도는 보통입니다만, 으음... 깰 수 있을지는 잘 모르겠네요.",
       writer: "운영자",
       createDate: "2024-02-06",
@@ -33,7 +33,7 @@ const MapDetails = () => {
     {
       heading: "3",
       title: "3층",
-      src: process.env.PUBLIC_URL + "",
+      src: process.env.PUBLIC_URL + "/imge/map3.png",
       text: "난이도 매우 어렵습니다 도전하실 분들만 하세요",
       writer: "운영자",
       createDate: "2024-02-06",
@@ -51,7 +51,11 @@ const MapDetails = () => {
           <>
             {selectedMap.title && <h3>{selectedMap.title}</h3>}
             {selectedMap.text && <p> {selectedMap.text}</p>}
-            {selectedMap.src && <p> {selectedMap.src}</p>}
+            <img
+              style={{ width: "800px" }}
+              src={selectedMap.src}
+              alt="이미지 예시"
+            />
             <p>작성자: {selectedMap.writer}</p>
             <p>작성일: {selectedMap.createDate}</p>
           </>

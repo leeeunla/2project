@@ -11,36 +11,38 @@ const Container = styled.div`
   padding: 1rem;
 `;
 const GameMapinfo = () => {
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    apiGetMap();
-  }, []);
-  async function apiGetMap() {
-    const response = await fetch(`http://localhost:8080/api/board/map`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((response) => response.json());
-    console.log(response);
-    if (response.resultCode === "SUCCESS") {
-      setData(response.data);
-    } else {
-      if (response.resultCode === "ERROR") {
-        setData(response.data);
-      }
-    }
-  }
+  const data = [
+    {},
+    {
+      id: 1,
+      title: "1층",
+      writer: "운영자",
+      cTime: "2024-02-09",
+    },
+    {
+      id: 2,
+      heading: "2",
+      title: "2층",
+      writer: "운영자",
+      cTime: "2024-02-10",
+    },
+    {
+      id: 3,
+      heading: "3",
+      title: "3층",
+      writer: "운영자",
+      cTime: "2024-02-10",
+    },
+  ];
   return (
     <>
       <Container>
         <h2 style={{ borderBottom: "1px solid white" }}>맵 정보</h2>
         <table>
           <tbody style={{ textAlign: "center" }}>
-            {data?.map((map, index) => (
+            {data.map((map, index) => (
               <tr key={index}>
-                <td>{index + 1}</td>
+                <td>{index}</td>
                 <td>
                   <Link
                     style={{ textDecoration: "none", color: "white" }}
@@ -49,7 +51,7 @@ const GameMapinfo = () => {
                     {map.title}
                   </Link>
                 </td>
-                <td>{map.author.username}</td>
+                <td>{map.author}</td>
                 <td>{map.createAt}</td>
               </tr>
             ))}
