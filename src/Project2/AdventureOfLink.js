@@ -11,10 +11,7 @@ const Container = styled.div`
 
 export function AdventureOfLink() {
   const [playingGame, setPlayingGame] = useState(false);
-  const [isGameOver, setIsGameOver] = useState(false);
   const gameFocus = useRef(null);
-  const [userName, setUserName] = useState();
-  const [score, setScore] = useState();
 
   const { unityProvider, sendMessage, addEventListener, removeEventListener } =
     useUnityContext({
@@ -31,18 +28,34 @@ export function AdventureOfLink() {
   }
 
   const handleGameOver = useCallback((userName, score) => {
-    setIsGameOver(true);
-    setUserName(userName);
-    setScore(score);
-    console.log(isGameOver, userName, score);
+    console.log("GAMEOVER", userName, score);
   }, []);
+
+  const handleGameStartEvent = useCallback(() => {
+    sendUserName();
+    console.log("GAMESTART");
+  });
+
+  const handleCoinEvent = useCallback((coinValue) => {
+    console.log("coinValue", coinValue);
+  });
 
   useEffect(() => {
     addEventListener("GameOverToReact", handleGameOver);
+    addEventListener("GameStartEventToReact", handleGameStartEvent);
+    addEventListener("CoinEventToReact", handleCoinEvent);
     return () => {
       removeEventListener("GameOverToReact", handleGameOver);
+      removeEventListener("GameStartEventToReact", handleGameStartEvent);
+      removeEventListener("CoinEventToReact", handleCoinEvent);
     };
-  }, [addEventListener, removeEventListener, handleGameOver]);
+  }, [
+    addEventListener,
+    removeEventListener,
+    handleGameOver,
+    handleGameStartEvent,
+    handleCoinEvent,
+  ]);
 
   function toggleGameStart() {
     gameFocus.current.focus();
@@ -60,7 +73,6 @@ export function AdventureOfLink() {
       ) : (
         <button onClick={toggleGameStart}>Start Game</button>
       )}
-      <button onClick={sendUserName}>Name</button>
       <Container tabIndex="0" ref={gameFocus}>
         {/* tabIndex : 포커스를 가능하게 함 */}
         {playingGame ? (

@@ -44,7 +44,9 @@ export function GameObject() {
 
   return (
     <>
-      <h2 style={{ borderBottom: "1px solid white" }}>게임오브젝트 (구조물)</h2>
+      <h2 style={{ borderBottom: "1px solid white", color: "white" }}>
+        게임오브젝트 (구조물)
+      </h2>
       <Container>
         <p>머릿말</p>
         <p>제목</p>

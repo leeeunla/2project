@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Header } from "./Header";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Footer } from "./Footer";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Login } from "./Login";
 
 const Container = styled.div``;
 const Div = styled.div`
@@ -29,7 +30,14 @@ const BG = styled.div`
 `;
 
 export function NavText() {
+  const [loginState, setLoginState] = useState(false);
+  const [item, setItem] = useState(true);
   const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.setItem("loginState", JSON.stringify({ id: null }));
+    setLoginState({ id: null });
+    navigate("/");
+  };
   const GameStart = () => {
     const loginState = JSON.parse(sessionStorage.getItem("loginState"));
     if (!loginState) {
@@ -63,18 +71,34 @@ export function NavText() {
                 회원가입
               </button>
             </Link>
-            <Link to="/login">
-              <button
-                style={{
-                  backgroundColor: "transparent",
-                  border: "none",
-                  marginRight: "15px",
-                  cursor: "pointer",
-                }}
-              >
-                로그인
-              </button>
-            </Link>
+            {loginState ? (
+              <Link to="/logout">
+                <button
+                  onClick={handleLogout}
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "none",
+                    marginRight: "15px",
+                    cursor: "pointer",
+                  }}
+                >
+                  로그아웃
+                </button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <button
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "none",
+                    marginRight: "15px",
+                    cursor: "pointer",
+                  }}
+                >
+                  로그인
+                </button>
+              </Link>
+            )}
 
             <Link to="/admin/login">
               <button

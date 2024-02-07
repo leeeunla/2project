@@ -1,7 +1,8 @@
 package com.dw.adventure_of_link.service;
 
-import java.util.Collections;
+import java.util.*;
 
+import com.dw.adventure_of_link.dto.AuthorityDto;
 import com.dw.adventure_of_link.exception.InvalidRequestException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,32 @@ public class UserService {
         user.setActivated(true);
 
         return UserDto.from(userRepository.save(user));
+    }
+
+    @Transactional
+    public List<UserDto> getAllUserInfo() {
+        List<User> userList = userRepository.findAll();
+        if (userList.isEmpty()) {
+            throw new InvalidRequestException("users","member not found");
+        }
+
+        List<UserDto> userDtoList = new ArrayList<UserDto>();
+        userList.forEach(user -> {
+            UserDto userDto = new UserDto();
+            userDto.setUsername(user.getUsername());
+            userDto.setPassword(null);
+            userDto.setName(user.getName());
+            userDto.setNickname(user.getNickname());
+            userDto.setBirthDate(user.getBirthDate().toString());
+            userDto.setGender(user.getGender().toString());
+            userDto.setEmail(user.getEmail());
+            Set<AuthorityDto> authorityDtoSet = new HashSet<>();
+            user.getAuthorities().forEach(authority -> authorityDtoSet.add(new AuthorityDto(authority.getAuthorityName())));
+            userDto.setAuthorityDtoSet(authorityDtoSet);
+            userDtoList.add(userDto);
+        });
+
+        return userDtoList;
     }
 
     @Transactional(readOnly = true)

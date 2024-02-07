@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins="http://localhost:3000",
@@ -27,6 +29,16 @@ public class UserController {
         return ResponseEntity.ok(new BaseResponse<>(
                 ResultCode.SUCCESS.name(),
                 userService.signup(userDto),
+                ResultCode.SUCCESS.getMsg()
+        ));
+    }
+
+    @GetMapping("/alluser")
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    public ResponseEntity<BaseResponse<List<UserDto>>> getAllUserInfo(HttpServletRequest request) {
+        return ResponseEntity.ok(new BaseResponse<>(
+                ResultCode.SUCCESS.name(),
+                userService.getAllUserInfo(),
                 ResultCode.SUCCESS.getMsg()
         ));
     }

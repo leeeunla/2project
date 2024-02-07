@@ -46,7 +46,9 @@ const GameMapinfo = () => {
 
   return (
     <>
-      <h2 style={{ borderBottom: "1px solid white" }}>맵 정보 </h2>
+      <h2 style={{ borderBottom: "1px solid white", color: "white" }}>
+        맵 정보{" "}
+      </h2>
       <Container>
         <p>머릿말</p>
         <p>제목</p>
