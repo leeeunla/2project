@@ -6,7 +6,6 @@ import { Writing } from "./Writing";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import { Managerlogin } from "./Managerlogin";
-import { ManagerSignup } from "./ManagerSignup";
 import { Board } from "./Board";
 import Findid from "./Findid";
 import { Inquiry } from "./Inquiry";
@@ -15,7 +14,6 @@ import Mypage from "./Mypage";
 import { Home } from "./Home";
 import { AdventureOfLink } from "./AdventureOfLink";
 import Administratorpage from "./Administratorpage";
-import { AdminWriting } from "./AdminWriting";
 
 import { UpdateDetalis } from "./UpdateDetalis";
 
@@ -27,6 +25,7 @@ import FreeDetails from "./FreeDetails";
 import { NoticeDetalis } from "./NoticeDetalis";
 import { WalkthroughDetails } from "./WalkthroughDetails";
 import Logout from "./Logout";
+import Managerlogout from "./Managerlogout";
 
 export const MainContext = createContext();
 const Container = styled.div``;
@@ -49,6 +48,7 @@ export function Main() {
                   <Route path="/Free/:id" element={<FreeDetails />} />
                   <Route path="/QA/:id" element={<QandAdetalis0 />} />
                   <Route path="logout" element={<Logout />} />
+
                   <Route
                     path="/walkthrough/:id"
                     element={<WalkthroughDetails />}
@@ -61,7 +61,7 @@ export function Main() {
                 <Route path="login" element={<Login />}></Route>
                 <Route path="signup" element={<Signup />}></Route>
                 <Route path="admin/login" element={<Managerlogin />}></Route>
-                <Route path="admin/signup" element={<ManagerSignup />} />
+                <Route path="admin/logout" element={<Managerlogout />} />
                 <Route path="find" element={<Findid />}></Route>
                 <Route path="quiry" element={<Inquiry />}></Route>
                 <Route path="write" element={<Write />}></Route>
@@ -69,7 +69,6 @@ export function Main() {
                   path="admin/dashboard"
                   element={<Administratorpage />}
                 ></Route>
-                <Route path="admin/writing" element={<AdminWriting />}></Route>
               </Routes>
             </div>
           </Container>

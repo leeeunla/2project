@@ -1,6 +1,8 @@
 import { Bar } from "react-chartjs-2";
 import { Chart as chartJs } from "chart.js/auto";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Container = styled.div`
   border: 1px solid black;
@@ -8,7 +10,9 @@ const Container = styled.div`
   width: 800px;
 `;
 export function Dashboardchart() {
-  const data = [];
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+
   return (
     <>
       <Container>
@@ -24,7 +28,7 @@ export function Dashboardchart() {
             datasets: [
               {
                 label: "회원가입 현황 수",
-                data: [],
+                data: [data],
                 borderWidth: 1,
               },
             ],

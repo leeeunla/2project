@@ -36,18 +36,21 @@ public class Board {
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private LocalDateTime createAt;
+	@Column(name = "src")
+	private String src;
 
 	public Board() {
 		super();
 	}
 
-	public Board(Long id, User author, String title, String text, String category, LocalDateTime createAt) {
+	public Board(Long id, User author, String title, String text, String category, LocalDateTime createAt, String src) {
 		this.id = id;
 		this.author = author;
 		this.title = title;
 		this.text = text;
 		this.category = category;
 		this.createAt = createAt;
+		this.src = src;
 	}
 
 	public Long getId() {
@@ -96,6 +99,14 @@ public class Board {
 
 	public void setCreateAt(LocalDateTime createAt) {
 		this.createAt = createAt;
+	}
+
+	public String getSrc() {
+		return src;
+	}
+
+	public void setSrc(String src) {
+		this.src = src;
 	}
 }
 

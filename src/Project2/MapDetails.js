@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -12,52 +13,50 @@ const Container = styled.div`
 `;
 
 const MapDetails = () => {
-  const data = [
-    {},
-    {
-      heading: "1",
-      title: "1층",
-      src: process.env.PUBLIC_URL + "/imge/map.png",
-      text: "어느길이 진짜 일까요? 잘못 가면 죽음이 기다리는 그 길은 과연 어디일까요?!",
-      writer: "운영자",
-      createDate: "2024-02-05",
-    },
-    {
-      heading: "2",
-      title: "2층",
-      src: process.env.PUBLIC_URL + "/imge/map2.png",
-      text: "난이도는 보통입니다만, 으음... 깰 수 있을지는 잘 모르겠네요.",
-      writer: "운영자",
-      createDate: "2024-02-06",
-    },
-    {
-      heading: "3",
-      title: "3층",
-      src: process.env.PUBLIC_URL + "/imge/map3.png",
-      text: "난이도 매우 어렵습니다 도전하실 분들만 하세요",
-      writer: "운영자",
-      createDate: "2024-02-06",
-    },
-  ];
+  const [data, setData] = useState();
   const { id } = useParams();
-  const selectedIndex = parseInt(id); // index 값을 숫자로 변환
-  const selectedMap = data[selectedIndex];
+  useEffect(() => {
+    apiGetGameMapById(id);
+  }, []);
+
+  async function apiGetGameMapById(id) {
+    const response = await fetch(`http://localhost:8080/api/board-any/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => response.json());
+
+    console.log(response);
+    if (response.resultCode === "SUCCESS") {
+      setData(response.data);
+    } else {
+      setData([
+        {
+          author: "",
+          text: "게시글이 존재하지 않습니다",
+          createAt: "",
+        },
+      ]);
+    }
+  }
+
   return (
     <>
       <Container>
         <h2 style={{ borderBottom: "1px solid white" }}>맵 정보</h2>
 
-        {selectedMap ? (
+        {data ? (
           <>
-            {selectedMap.title && <h3>{selectedMap.title}</h3>}
-            {selectedMap.text && <p> {selectedMap.text}</p>}
+            <h3>{data.title}</h3>
+            <p> {data.text}</p>
             <img
-              style={{ width: "800px" }}
-              src={selectedMap.src}
+              style={{ width: "200px" }}
+              src={process.env.PUBLIC_URL + data.src}
               alt="이미지 예시"
             />
-            <p>작성자: {selectedMap.writer}</p>
-            <p>작성일: {selectedMap.createDate}</p>
+            <p>작성자: {data.author.username}</p>
+            <p>작성일: {data.createAt.substr(0, 10)}</p>
           </>
         ) : (
           <p>선택한 맵 정보가 없습니다.</p>

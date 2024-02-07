@@ -10,7 +10,7 @@ const Div = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  background-color: rgb(100, 149, 237);
+  background-image: linear-gradient(to right, #1e90ff, #87cefa);
   position: relative;
   z-index: 2;
 `;
@@ -21,7 +21,8 @@ const BG = styled.div`
 
   left: 0;
   right: 0;
-  background-image: url("https://cdn.pixabay.com/photo/2022/06/08/05/47/stars-7249785_1280.jpg");
+  background-image: url("https://cdn.pixabay.com/photo/2016/03/27/22/06/sea-1284467_640.jpg");
+  /* background-image: url("https://cdn.pixabay.com/photo/2023/09/27/21/02/nature-8280318_1280.png"); */
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -100;
@@ -92,7 +93,7 @@ export function NavText() {
               onClick={GameStart}
               style={{
                 padding: "20px",
-                backgroundImage: "linear-gradient(to right, #6495Ed, #4682B4)",
+                backgroundImage: "linear-gradient(to right, #1e90ff, #87cefa)",
                 borderWidth: "1px",
                 borderRadius: "3px",
                 cursor: "pointer",

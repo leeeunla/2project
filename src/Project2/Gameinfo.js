@@ -9,6 +9,9 @@ const Container = styled.div`
   border: 1px solid gray;
   margin: 1rem;
   padding: 1rem;
+  display: grid;
+  grid-template-columns: 10% 35% 35% 20%;
+  text-align: center;
 `;
 export function Gameinfo() {
   const [data, setData] = useState();
@@ -39,28 +42,27 @@ export function Gameinfo() {
   }
   return (
     <>
+      <h2 style={{ borderBottom: "1px solid white" }}>게임정보</h2>
       <Container>
-        <h2 style={{ borderBottom: "1px solid white" }}>게임정보</h2>
-        <table>
-          <tbody style={{ textAlign: "center" }}>
-            {data?.map((game, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-
-                <td>
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to={`/Game/${game.id}`}
-                  >
-                    {game.title}
-                  </Link>
-                </td>
-                <td>{game.author.username}</td>
-                <td>{game.createAt}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <p>머릿말</p>
+        <p>제목</p>
+        <p>작성자</p>
+        <p>작성일</p>
+        {data?.map((game, index) => (
+          <>
+            <p>{index + 1}</p>
+            <p>
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to={`/Game/${game.id}`}
+              >
+                {game.title}
+              </Link>
+            </p>
+            <p>{game.author.username}</p>
+            <p>{game.createAt.substr(0, 10)}</p>
+          </>
+        ))}
       </Container>
     </>
   );

@@ -16,7 +16,7 @@ const QandAComment = ({ comments }) => {
           >
             <div style={{ display: "flex", gap: "20px" }}>
               <p>{comment.author.username}</p>
-              <p>{comment.createAt}</p>
+              <p>{comment.createAt.substr(0, 10)}</p>
             </div>
             <p>{comment.text}</p>
           </div>

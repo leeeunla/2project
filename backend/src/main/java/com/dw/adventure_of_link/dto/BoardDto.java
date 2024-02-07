@@ -12,16 +12,19 @@ public class BoardDto {
     private String text;
     @NotBlank
     private String category;
+
+	private String src;
     
 	public BoardDto() {
 		super();
 	}
-	public BoardDto(@NotBlank String author, @NotBlank String title, @NotBlank String text, @NotBlank String category) {
+	public BoardDto(@NotBlank String author, @NotBlank String title, @NotBlank String text, @NotBlank String category, String src) {
 		super();
 		this.author = author;
 		this.title = title;
 		this.text = text;
 		this.category = category;
+		this.src = src;
 	}
 	public String getAuthor() {
 		return author;
@@ -47,5 +50,12 @@ public class BoardDto {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-    
+
+	public String getSrc() {
+		return src;
+	}
+
+	public void setSrc(String src) {
+		this.src = src;
+	}
 }

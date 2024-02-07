@@ -51,6 +51,7 @@ export function NoticeDetalis() {
             <h3>{data.title}</h3>
             <p>{data.text}</p>
             <p>작성자: {data.author.username}</p>
+            <p>작성일 :{data.createAt.substr(0, 10)}</p>
           </>
         ) : (
           <p>선택한 공지사항 정보가 없습니다.</p>

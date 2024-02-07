@@ -38,6 +38,7 @@ public class BoardService {
         board.setCategory(boardDto.getCategory());
         board.setText(boardDto.getText());
         board.setTitle(boardDto.getTitle());
+        board.setSrc(boardDto.getSrc());
 
         // 리포지토리 저장
         boardRepository.save(board);

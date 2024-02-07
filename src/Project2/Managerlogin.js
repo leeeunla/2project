@@ -78,7 +78,9 @@ export function Managerlogin() {
                 padding: "12px",
                 width: "220px",
               }}
-            ></input>
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+            />
           </p>
           <p>
             <input
@@ -88,9 +90,12 @@ export function Managerlogin() {
                 padding: "12px",
                 width: "220px",
               }}
-            ></input>
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </p>
           <button
+            onClick={apiLogin}
             style={{
               padding: "10px",
               marginBottom: "5px",
@@ -100,12 +105,6 @@ export function Managerlogin() {
           >
             로그인
           </button>
-          <Link
-            style={{ textDecoration: "none", color: "black" }}
-            to="/admin/signup"
-          >
-            <p>회원가입</p>
-          </Link>
         </div>
       </Contanier>
     </>

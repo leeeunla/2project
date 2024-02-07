@@ -1,9 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour
 {
+    [DllImport("__Internal")]
+    private static extern void GameOverToReact(string userName, int score);
+    [DllImport("__Internal")]
+    private static extern void GameStartEventToReact();
+    [DllImport("__Internal")]
+    private static extern void CoinEventToReact(int coinValue);
+
     Rigidbody2D rbody;
     float axisH = 0.0f;
     public float speed = 3.0f;
@@ -31,6 +41,10 @@ public class PlayerController : MonoBehaviour
 
     bool isMoving = false;
 
+
+    public GameObject userName;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +55,11 @@ public class PlayerController : MonoBehaviour
         oldAnime = stopAnime;
 
         gameState = "playing"; // 게임 중
+
+
+#if UNITY_WEBGL == true && UNITY_EDITOR == false
+       GameStartEventToReact();
+#endif
     }
 
     // Update is called once per frame
@@ -149,6 +168,10 @@ public class PlayerController : MonoBehaviour
             score = item.value;
             // 아이템 제거
             Destroy(collision.gameObject);
+
+#if UNITY_WEBGL == true && UNITY_EDITOR == false
+       CoinEventToReact(score);
+#endif
         }
 
     }
@@ -173,6 +196,10 @@ public class PlayerController : MonoBehaviour
         GetComponent<CapsuleCollider2D>().enabled = false;
         // 플레이어를 위로 튀어 오르게 하는 연출
         rbody.AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
+
+#if UNITY_WEBGL == true && UNITY_EDITOR == false
+        GameOverToReact("Player1", 100);
+#endif
     }
 
     void GameStop()
@@ -194,5 +221,9 @@ public class PlayerController : MonoBehaviour
         {
             isMoving = true;
         }
+    }
+    public void setUserName(string name)
+    {
+        userName.GetComponent<Text>().text = name;
     }
 }
