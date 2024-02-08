@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { Dashboardchart } from "./Dashboardchart";
 import { Ranking } from "./Ranking";
-import { Operator } from "./Operator";
-import { Dashboardinquiry } from "./Dashboardinquiry";
+
 import { FaArrowUp } from "react-icons/fa6";
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 50px;
   padding: 15px;
 `;
@@ -20,7 +19,7 @@ const Dashboard1 = () => {
     <>
       <Container>
         <Dashboardchart />
-        <Operator />
+
         <Ranking />
       </Container>
       <p

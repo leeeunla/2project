@@ -52,7 +52,6 @@ const Administratorpage = () => {
           }}
         >
           <h2>링크의 모험</h2>
-          <p>운영자</p>
           <p onClick={() => dashboardclick("대시보드")}>대시보드</p>
           <br />
           <h2>사용자관리</h2>
