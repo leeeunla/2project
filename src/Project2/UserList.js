@@ -19,20 +19,21 @@ const UserList = () => {
   }, []);
   async function apiGetUserList() {
     const loginState = JSON.parse(sessionStorage.getItem("loginState"));
-    const response = await fetch(`http://localhost:8080/api/alluser`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${loginState.token}`,
-      },
-    }).then((response) => response.json());
+    if (loginState && loginState.token) {
+      const response = await fetch(`http://localhost:8080/api/alluser`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${loginState.token}`,
+        },
+      }).then((response) => response.json());
 
-    console.log(response);
-    if (response.resultCode === "SUCCESS") {
-      setData(response.data);
-    } else {
-      if (response.resultCode === "ERROR") {
+      console.log(response);
+      if (response.resultCode === "SUCCESS") {
         setData(response.data);
+      } else {
+        if (response.resultCode === "ERROR") {
+        }
       }
     }
   }

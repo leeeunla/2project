@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const MenuBox = styled.div`
@@ -34,6 +34,7 @@ const SubTitleDiv = styled.div`
 export function Header() {
   const [menuClass, setMenuClass] = useState("");
   const [ModalOpen, setModalopen] = useState(false);
+
   const handleMenuOpen = () => {
     setMenuClass("menuOpen");
   };
@@ -79,6 +80,18 @@ function SubTitle() {
     const newWindow = window.open("/quiry", "_blank", "width=800,height=400");
     newWindow.moveTo(100, 300);
   }
+  const navigate = useNavigate();
+  const page = () => {
+    const loginState = JSON.parse(sessionStorage.getItem("loginState"));
+    if (!loginState) {
+      alert("로그인 하세요");
+      navigate("/admin/login");
+    } else {
+      alert("로그인 확인되었습니다");
+      navigate("/admin/dashboard");
+    }
+  };
+
   return (
     <>
       <SubTitleDiv>
@@ -121,12 +134,10 @@ function SubTitle() {
         >
           <p>1:1 문의</p>
         </div>
-        <Link
-          style={{ textDecoration: "none", color: "white" }}
-          to="admin/dashboard"
-        >
-          <p>관리자페이지</p>
-        </Link>
+
+        <div style={{ cursor: "pointer" }} onClick={page}>
+          <p> 관리자페이지</p>
+        </div>
       </SubTitleDiv>
     </>
   );

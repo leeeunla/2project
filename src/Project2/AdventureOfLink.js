@@ -11,6 +11,8 @@ const Container = styled.div`
 
 export function AdventureOfLink() {
   const [playingGame, setPlayingGame] = useState(false);
+  const [loginState, setLoginState] = useState();
+  const [data, setData] = useState();
   const gameFocus = useRef(null);
 
   const { unityProvider, sendMessage, addEventListener, removeEventListener } =
@@ -23,6 +25,7 @@ export function AdventureOfLink() {
 
   function sendUserName() {
     const loginState = JSON.parse(sessionStorage.getItem("loginState"));
+    setLoginState(loginState);
     const username = loginState.username;
     sendMessage("player", "setUserName", username);
   }
@@ -37,7 +40,8 @@ export function AdventureOfLink() {
   });
 
   const handleCoinEvent = useCallback((coinValue) => {
-    console.log("coinValue", coinValue);
+    console.log("coinValue", coinValue + 3);
+    apiSetScore(coinValue);
   });
 
   useEffect(() => {
@@ -64,6 +68,30 @@ export function AdventureOfLink() {
       top: 300,
       behavior: "smooth",
     });
+  }
+
+  async function apiSetScore(coinValue) {
+    const score = {
+      username: loginState?.username,
+      score: coinValue + 3,
+    };
+    const response = await fetch(`http://localhost:8080/api/score`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${loginState?.token}`,
+      },
+      body: JSON.stringify(score),
+    }).then((response) => response.json());
+
+    console.log(response);
+    if (response.resultCode === "SUCCESS") {
+      setData(response.data);
+    } else {
+      if (response.resultCode === "ERROR") {
+        setData(response.data);
+      }
+    }
   }
 
   return (
