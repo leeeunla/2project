@@ -169,8 +169,10 @@ public class PlayerController : MonoBehaviour
             // 아이템 제거
             Destroy(collision.gameObject);
 
+            Debug.Log(item.transform.position.y);
+
 #if UNITY_WEBGL == true && UNITY_EDITOR == false
-       CoinEventToReact(score);
+       CoinEventToReact((int)item.transform.position.y);
 #endif
         }
 

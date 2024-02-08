@@ -60,8 +60,6 @@ const UserInfo = () => {
           <label style={{ margin: "10px" }}>
             이메일: &nbsp;
             <input type="text" placeholder="" />
-            &nbsp;@&nbsp;
-            <input type="text" placeholder="" />
           </label>
         </div>
         <div style={{ margin: "20px" }}>

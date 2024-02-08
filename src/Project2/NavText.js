@@ -30,14 +30,30 @@ const BG = styled.div`
 `;
 
 export function NavText() {
-  const [loginState, setLoginState] = useState(false);
-  const [item, setItem] = useState(true);
   const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.setItem("loginState", JSON.stringify({ id: null }));
-    setLoginState({ id: null });
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태를 관리하는 상태
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 로그인 상태를 확인하고 설정
+    const loginState = sessionStorage.getItem("loginState");
+    if (loginState !== null) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  async function apiLogout() {
+    sessionStorage.removeItem("loginState");
+    setIsLoggedIn(false);
+
+    alert("로그아웃 되었습니다");
     navigate("/");
-  };
+  }
+
+  async function apiLogin() {
+    // 로그인 로직 처리
+    // ...
+
+    setIsLoggedIn(true); // 로그인 시 로그인 상태를 true로 변경
+  }
   const GameStart = () => {
     const loginState = JSON.parse(sessionStorage.getItem("loginState"));
     if (!loginState) {
@@ -59,28 +75,44 @@ export function NavText() {
           </Link>
 
           <div style={{ margin: "15px" }}>
-            <Link to="/signup">
-              <button
-                style={{
-                  backgroundColor: "transparent",
-                  border: "none",
-                  marginRight: "20px",
-                  cursor: "pointer",
-                }}
-              >
-                회원가입
-              </button>
-            </Link>
-            {loginState ? (
-              <Link to="/logout">
+            {isLoggedIn ? (
+              <Link to="/page">
                 <button
-                  onClick={handleLogout}
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "none",
+                    marginRight: "20px",
+                    cursor: "pointer",
+                  }}
+                >
+                  마이페이지
+                </button>
+              </Link>
+            ) : (
+              <Link to="/signup">
+                <button
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "none",
+                    marginRight: "20px",
+                    cursor: "pointer",
+                  }}
+                >
+                  회원가입
+                </button>
+              </Link>
+            )}
+
+            {isLoggedIn ? (
+              <Link to="/">
+                <button
                   style={{
                     backgroundColor: "transparent",
                     border: "none",
                     marginRight: "15px",
                     cursor: "pointer",
                   }}
+                  onClick={apiLogout}
                 >
                   로그아웃
                 </button>
@@ -88,6 +120,7 @@ export function NavText() {
             ) : (
               <Link to="/login">
                 <button
+                  onClick={apiLogin}
                   style={{
                     backgroundColor: "transparent",
                     border: "none",

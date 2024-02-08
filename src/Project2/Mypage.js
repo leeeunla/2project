@@ -8,9 +8,10 @@ import Postmanagement from "./Postmanagement";
 import Account from "./Account";
 
 const Container = styled.div`
-  border: 1px solid black;
+  border: 1px solid white;
   width: 800px;
   border-radius: 25px;
+  color: white;
 `;
 const Mypage = () => {
   const [tab, setTab] = useState("회원정보");
@@ -28,12 +29,19 @@ const Mypage = () => {
             cursor: "pointer",
             marginLeft: "10px",
             marginRight: "10px",
-            borderBottom: "3px solid black",
+            borderBottom: "3px solid white",
             alignItems: "center",
           }}
         >
           <h2>내정보</h2>
-          <div style={{ display: "flex", margin: "15px", gap: "50px" }}>
+          <div
+            style={{
+              display: "flex",
+              margin: "15px",
+              gap: "50px",
+              color: "white",
+            }}
+          >
             <p onClick={() => tabClick("계정관리")}>계정관리</p>
             <p onClick={() => tabClick("게임정보")}>게임정보</p>
             <p onClick={() => tabClick("게시물관리")}>게시물 관리</p>
