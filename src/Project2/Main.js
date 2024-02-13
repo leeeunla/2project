@@ -14,9 +14,7 @@ import Mypage from "./Mypage";
 import { Home } from "./Home";
 import { AdventureOfLink } from "./AdventureOfLink";
 import Administratorpage from "./Administratorpage";
-
 import { UpdateDetalis } from "./UpdateDetalis";
-
 import { QandAdetalis0 } from "./QandADetalis0";
 import { GameDetails } from "./GameDetails";
 import { ObjectDetails } from "./ObjectDetails";

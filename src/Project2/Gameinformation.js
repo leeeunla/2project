@@ -12,15 +12,15 @@ const Container = styled.div`
 // 게임 정보
 const Gameinformation = () => {
   const [username, setUsername] = useState("");
-  const [score, setScore] = useState();
   const [sortedScores, setSortedScores] = useState();
   const [userScore, setUserScore] = useState(); // 변경된 부분
 
-  function sendUserName() {
+  useEffect(() => {
     const loginState = JSON.parse(sessionStorage.getItem("loginState"));
     const username = loginState.username;
     setUsername(username);
-  }
+  }, []);
+
   useEffect(() => {
     apiGetScoreList();
   }, []);
@@ -38,23 +38,29 @@ const Gameinformation = () => {
 
       console.log(response);
       if (response.resultCode === "SUCCESS") {
-        setScore(response.data);
         const temp = [...response.data];
         temp.sort((a, b) => b.score - a.score);
         setSortedScores(temp);
-        if (temp.length > 0) {
-          setUserScore(
-            temp.find((score) => score.username === username)?.score || 0
-          );
-        }
       } else if (response.resultCode === "ERROR") {
       }
     }
   }
 
   useEffect(() => {
-    console.log("score");
-  }, [score]);
+    console.log("username", username);
+    if (sortedScores?.length > 0) {
+      const myScores = sortedScores.filter(
+        (data) => data.username === username
+      );
+      console.log("myScores", myScores, username);
+      if (myScores.length > 0) {
+        setUserScore(myScores[0]);
+      } else {
+        setUserScore(null);
+      }
+    }
+  }, [sortedScores]);
+
   return (
     <>
       <Container>
@@ -68,16 +74,10 @@ const Gameinformation = () => {
           }}
         >
           <img src="1x.png" alt="게임 이미지" />
-          <p onClick={sendUserName}>아이디:{username}</p>
+          <p>아이디:{username}</p>
         </div>
         <div style={{ textAlign: "center", marginRight: "130px" }}>
-          {sortedScores?.map((score, index) => (
-            <div key={index}>
-              {score.username === username && (
-                <p>플레이어가 먹은 코인 수: {userScore}</p>
-              )}
-            </div>
-          ))}
+          <p>플레이어가 먹은 코인 수: {userScore?.score}</p>
         </div>
       </Container>
     </>

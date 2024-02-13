@@ -16,7 +16,6 @@ const Contanier = styled.div`
 export function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -100,7 +99,6 @@ export function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </p>
-          <div>{error && <p style={{ color: "red" }}>{error}</p>}</div>
           <button
             style={{
               width: "250px",

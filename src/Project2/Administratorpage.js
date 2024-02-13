@@ -32,7 +32,7 @@ const Administratorpage = () => {
     const loginState = JSON.parse(sessionStorage.getItem("loginState"));
     if (loginState) {
       if (loginState.authorities.includes("ROLE_ADMIN")) {
-        alert("로그인 되었습니다.");
+        // alert("로그인 되었습니다.");
         navigate("/admin/dashboard");
       } else {
         alert("관리자 권한이 없습니다");

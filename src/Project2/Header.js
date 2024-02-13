@@ -87,7 +87,7 @@ function SubTitle() {
       alert("로그인 하세요");
       navigate("/admin/login");
     } else {
-      alert("로그인 확인되었습니다");
+      // alert("관리자의 로그인이 확인되었습니다");
       navigate("/admin/dashboard");
     }
   };
@@ -135,8 +135,8 @@ function SubTitle() {
           <p>1:1 문의</p>
         </div>
 
-        <div style={{ cursor: "pointer" }} onClick={page}>
-          <p> 관리자페이지</p>
+        <div style={{ cursor: "pointer" }}>
+          <p onClick={page}> 관리자페이지</p>
         </div>
       </SubTitleDiv>
     </>
