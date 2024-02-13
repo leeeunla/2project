@@ -13,8 +13,8 @@ const Container = styled.div`
 const Gameinformation = () => {
   const [username, setUsername] = useState("");
   const [score, setScore] = useState();
-  const [sortedScores, setSortedScores] = useState([]);
-  const [userScore, setUserScore] = useState(0); // 변경된 부분
+  const [sortedScores, setSortedScores] = useState();
+  const [userScore, setUserScore] = useState(); // 변경된 부분
 
   function sendUserName() {
     const loginState = JSON.parse(sessionStorage.getItem("loginState"));
@@ -43,7 +43,9 @@ const Gameinformation = () => {
         temp.sort((a, b) => b.score - a.score);
         setSortedScores(temp);
         if (temp.length > 0) {
-          setUserScore(temp[0].score);
+          setUserScore(
+            temp.find((score) => score.username === username)?.score || 0
+          );
         }
       } else if (response.resultCode === "ERROR") {
       }
@@ -69,9 +71,9 @@ const Gameinformation = () => {
           <p onClick={sendUserName}>아이디:{username}</p>
         </div>
         <div style={{ textAlign: "center", marginRight: "130px" }}>
-          {sortedScores?.map((scoreItem, index) => (
+          {sortedScores?.map((score, index) => (
             <div key={index}>
-              {scoreItem.username === username && (
+              {score.username === username && (
                 <p>플레이어가 먹은 코인 수: {userScore}</p>
               )}
             </div>
