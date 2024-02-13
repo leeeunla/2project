@@ -13,12 +13,10 @@ const Postmanagement = () => {
   const [text, setText] = useState("");
   const [category, setCategory] = useState("");
   const navigate = useNavigate();
-
+  const [loginState, setLoginstate] = useState("");
   async function apiBoardpage() {
     const author = JSON.parse(sessionStorage.getItem("loginState"));
     if (!author) {
-      alert("로그인");
-      navigate("/login");
     } else {
       const board = {
         title: title,
@@ -58,11 +56,6 @@ const Postmanagement = () => {
           <select onChange={(e) => setCategory(e.target.value)}>
             <p value={title} onChange={(e) => setTitle(e.target.value)}></p>
             <p value={text} onChange={(e) => setText(e.target.value)}></p>
-
-            <p
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            ></p>
           </select>
           <div
             style={{
