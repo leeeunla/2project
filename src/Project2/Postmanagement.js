@@ -15,17 +15,16 @@ const Postmanagement = () => {
   const navigate = useNavigate();
 
   async function apiBoardpage() {
-    const loginState = JSON.parse(sessionStorage.getItem("loginState"));
     const author = JSON.parse(sessionStorage.getItem("loginState"));
     if (!author) {
       alert("로그인");
-      navigator("/login");
+      navigate("/login");
     } else {
       const board = {
         title: title,
         text: text,
         category: category,
-        author: author.id,
+        author: author.username,
       };
       const response = await fetch(`http://localhost:8080/api/board`, {
         method: "POST",
@@ -56,14 +55,15 @@ const Postmanagement = () => {
         </div>
         <div>
           <p onClick={apiBoardpage}>내가 쓴 글</p>
-          {/* <select>
-            <option value="선택" selected="selected">
-              선택
-            </option>
-            <option>자유 게시판</option>
-            <option>공략 게시판</option>
-            <option>질문과 답변</option>
-          </select> */}
+          <select onChange={(e) => setCategory(e.target.value)}>
+            <p value={title} onChange={(e) => setTitle(e.target.value)}></p>
+            <p value={text} onChange={(e) => setText(e.target.value)}></p>
+
+            <p
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            ></p>
+          </select>
           <div
             style={{
               borderTop: "1px solid black",
@@ -75,13 +75,13 @@ const Postmanagement = () => {
         </div>
         <div>
           <p>내가 쓴 댓글</p>
-          <select>
+          <select onChange={(e) => setCategory(e.target.value)}>
             <option value="선택" selected="selected">
               선택
             </option>
-            <option value="">자유 게시판</option>
-            <option value="">공략 게시판</option>
-            <option value="">질문과 답변</option>
+            <option value="자유 게시판">자유 게시판</option>
+            <option value="공략 게시판">공략 게시판</option>
+            <option value="질문과 답변">질문과 답변</option>
           </select>
           <div
             style={{
