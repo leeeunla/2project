@@ -5,7 +5,7 @@ import Dashboard1 from "./Dashboard1";
 import UserList from "./UserList";
 import Boardmanagement from "./Boardmanagement";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //대시보드
 const Container = styled.div`
@@ -42,6 +42,9 @@ const Administratorpage = () => {
   }, []);
   return (
     <>
+      <Link style={{ textDecoration: "none", color: "black" }} to="/">
+        <button>HOME</button>
+      </Link>
       <button onClick={apiLogout}>로그아웃</button>
       <Container>
         <div

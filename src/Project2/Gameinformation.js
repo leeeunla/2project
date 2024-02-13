@@ -13,8 +13,8 @@ const Container = styled.div`
 const Gameinformation = () => {
   const [username, setUsername] = useState("");
   const [score, setScore] = useState();
-  const [sortedScores, setSortedScores] = useState();
-  const [userScore, setUserScore] = useState(); // 변경된 부분
+  const [sortedScores, setSortedScores] = useState([]);
+  const [userScore, setUserScore] = useState(0); // 변경된 부분
 
   function sendUserName() {
     const loginState = JSON.parse(sessionStorage.getItem("loginState"));
@@ -65,13 +65,13 @@ const Gameinformation = () => {
             width: "500px",
           }}
         >
-          <img src="1x.png" />
+          <img src="1x.png" alt="게임 이미지" />
           <p onClick={sendUserName}>아이디:{username}</p>
         </div>
         <div style={{ textAlign: "center", marginRight: "130px" }}>
-          {sortedScores?.map((score, index) => (
+          {sortedScores?.map((scoreItem, index) => (
             <div key={index}>
-              {score.username == username && (
+              {scoreItem.username === username && (
                 <p>플레이어가 먹은 코인 수: {userScore}</p>
               )}
             </div>
