@@ -52,19 +52,31 @@ const Postmanagement = () => {
           <h2>게시물 관리</h2>
         </div>
         <div>
-          <p onClick={apiBoardpage}>내가 쓴 글</p>
-          <select onChange={(e) => setCategory(e.target.value)}>
-            <p value={title} onChange={(e) => setTitle(e.target.value)}></p>
-            <p value={text} onChange={(e) => setText(e.target.value)}></p>
-          </select>
-          <div
-            style={{
-              borderTop: "1px solid black",
-              borderBottom: "1px solid black",
-              padding: "30px",
-              margin: "5px",
-            }}
-          ></div>
+          <input
+            type="radio"
+            name="categorys"
+            value="free"
+            // checked={category === "notice"}
+            onChange={(e) => setCategory(e.target.value)}
+            style={{ padding: "10px", margin: "10px" }}
+          />
+          자유게시판
+          <input
+            type="radio"
+            name="categorys"
+            value="walithrough"
+            onChange={(e) => setCategory(e.target.value)}
+            style={{ padding: "10px", margin: "10px" }}
+          />
+          공략게시판
+          <input
+            type="radio"
+            name="categorys"
+            value="qna"
+            onChange={(e) => setCategory(e.target.value)}
+            style={{ padding: "10px", margin: "10px" }}
+          />
+          질문과 답변
         </div>
         <div>
           <p>내가 쓴 댓글</p>
