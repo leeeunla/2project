@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
@@ -24,6 +26,8 @@ public class GameUIManager : MonoBehaviour
     public int stageScore = 0;          // 스테이지 점수
 
     public GameObject inputUI;
+
+    public GameObject scoreJump;
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +76,7 @@ public class GameUIManager : MonoBehaviour
                 // 정수에 할당하여 소숫점 버림
                 /*           int time = (int)timeCnt.displayTime;
                            totalScore += time * 10;        // 남은 시간을 점수에 더한다.*/
-    
+
             }
 
             // +++ 점수 추가 +++
@@ -81,7 +85,7 @@ public class GameUIManager : MonoBehaviour
             UpdateScore();// 점수를 UI에 반영
         }
 
-    
+
 
 
         else if (PlayerController.gameState == "gameover")
@@ -143,11 +147,15 @@ public class GameUIManager : MonoBehaviour
         mainImage.SetActive(false);
     }
     // +++ 점수 추가 +++
-    void UpdateScore()
-    {
-        int score = stageScore + totalScore;
-        scoreText.GetComponent<Text>().text = score.ToString();
-    }
+  void UpdateScore()
+{
+    int score = stageScore + totalScore;
+    scoreText.GetComponent<Text>().text = score.ToString();
+
+        scoreJump.GetComponent<Text>().text = score.ToString();
+
+}
+
 
     public void Jump()
         {

@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject userName;
 
+    public GameObject userJump;
 
     // Start is called before the first frame update
     void Start()
@@ -227,5 +228,9 @@ public class PlayerController : MonoBehaviour
     public void setUserName(string name)
     {
         userName.GetComponent<Text>().text = name;
+    }
+    public void etUserJump(string jump)
+    {
+        userJump.GetComponent<Text>().text = jump;
     }
 }
